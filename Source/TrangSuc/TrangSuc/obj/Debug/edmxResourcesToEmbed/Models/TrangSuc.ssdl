@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TRANGSUCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CTHD_TrangSuc">
+    <Key>
+      <PropertyRef Name="IDHoaDon" />
+      <PropertyRef Name="IDTrangSuc" />
+    </Key>
+    <Property Name="IDHoaDon" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IDTrangSuc" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="Gia" Type="int" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NgayLap" Type="date" />
+    <Property Name="NgayThanhToan" Type="date" />
+    <Property Name="NguoiLap" Type="nvarchar" MaxLength="50" />
+    <Property Name="TongTien" Type="int" />
+    <Property Name="HoTenKhachHang" Type="nvarchar" MaxLength="200" />
+    <Property Name="SdtKhachHang" Type="nvarchar" MaxLength="20" />
+    <Property Name="DiaChiKhachHang" Type="text" />
+    <Property Name="TinhTrang" Type="int" />
+  </EntityType>
+  <EntityType Name="LoaiTrangSuc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TenLoai" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="200" />
+    <Property Name="DiaChi" Type="text" />
+    <Property Name="Sdt" Type="nvarchar" MaxLength="20" />
+    <Property Name="CMND" Type="nvarchar" MaxLength="20" />
+    <Property Name="NgaySinh" Type="date" />
+  </EntityType>
+  <EntityType Name="TrangSuc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TenTrangSuc" Type="nvarchar" MaxLength="200" />
+    <Property Name="LoaiTrangSuc" Type="nvarchar" MaxLength="50" />
+    <Property Name="GiaCong" Type="int" />
+    <Property Name="KhoiLuongTinh" Type="float" />
+    <Property Name="SoHat" Type="int" />
+    <Property Name="GiaHat" Type="int" />
+    <Property Name="HinhAnh" Type="text" />
+  </EntityType>
+  <Association Name="FK_CTHD_HOADON">
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CTHD_TrangSuc" Type="Self.CTHD_TrangSuc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CTHD_TrangSuc">
+        <PropertyRef Name="IDHoaDon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTHD_TRANGSUC">
+    <End Role="TrangSuc" Type="Self.TrangSuc" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CTHD_TrangSuc" Type="Self.CTHD_TrangSuc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrangSuc">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CTHD_TrangSuc">
+        <PropertyRef Name="IDTrangSuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRANGSUC_LOAITRANGSUC">
+    <End Role="LoaiTrangSuc" Type="Self.LoaiTrangSuc" Multiplicity="0..1" />
+    <End Role="TrangSuc" Type="Self.TrangSuc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiTrangSuc">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TrangSuc">
+        <PropertyRef Name="LoaiTrangSuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_DELETE_HOADON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_DELETE_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_DELETE_TRANGSUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_INSERT_CTHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDHD" Type="nvarchar" Mode="In" />
+    <Parameter Name="IDTS" Type="nvarchar" Mode="In" />
+    <Parameter Name="Gia" Type="int" Mode="In" />
+    <Parameter Name="SoLuong" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_INSERT_HOADON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ThanhToanLuon" Type="bit" Mode="In" />
+    <Parameter Name="NguoiLap" Type="nvarchar" Mode="In" />
+    <Parameter Name="TongTien" Type="int" Mode="In" />
+    <Parameter Name="HoTenKhach" Type="nvarchar" Mode="In" />
+    <Parameter Name="stdKhach" Type="nvarchar" Mode="In" />
+    <Parameter Name="DiachiKhach" Type="text" Mode="In" />
+    <Parameter Name="TinhTrang" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_INSERT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
+    <Parameter Name="DiaChi" Type="text" Mode="In" />
+    <Parameter Name="sdt" Type="nvarchar" Mode="In" />
+    <Parameter Name="CMND" Type="nvarchar" Mode="In" />
+    <Parameter Name="NgaySinh" Type="date" Mode="In" />
+  </Function>
+  <Function Name="SP_INSERT_TRANGSUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TenTrangSuc" Type="nvarchar" Mode="In" />
+    <Parameter Name="LoaiTrangSuc" Type="nvarchar" Mode="In" />
+    <Parameter Name="GiaCong" Type="int" Mode="In" />
+    <Parameter Name="KhoiLuongTinh" Type="float" Mode="In" />
+    <Parameter Name="SoHat" Type="int" Mode="In" />
+    <Parameter Name="GiaHat" Type="int" Mode="In" />
+    <Parameter Name="HinhAnh" Type="text" Mode="In" />
+  </Function>
+  <Function Name="SP_UPDATE_HOADON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NgayThanhToan" Type="date" Mode="In" />
+    <Parameter Name="TinhTrang" Type="int" Mode="In" />
+    <Parameter Name="ID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_UPDATE_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
+    <Parameter Name="DiaChi" Type="text" Mode="In" />
+    <Parameter Name="sdt" Type="nvarchar" Mode="In" />
+    <Parameter Name="NgaySinh" Type="date" Mode="In" />
+    <Parameter Name="ID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_UPDATE_TRANGSUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="nvarchar" Mode="In" />
+    <Parameter Name="GiaCong" Type="int" Mode="In" />
+    <Parameter Name="GiaHat" Type="int" Mode="In" />
+    <Parameter Name="HinhAnh" Type="text" Mode="In" />
+  </Function>
+  <EntityContainer Name="TRANGSUCModelStoreContainer">
+    <EntitySet Name="CTHD_TrangSuc" EntityType="Self.CTHD_TrangSuc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiTrangSuc" EntityType="Self.LoaiTrangSuc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TrangSuc" EntityType="Self.TrangSuc" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CTHD_HOADON" Association="Self.FK_CTHD_HOADON">
+      <End Role="HoaDon" EntitySet="HoaDon" />
+      <End Role="CTHD_TrangSuc" EntitySet="CTHD_TrangSuc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTHD_TRANGSUC" Association="Self.FK_CTHD_TRANGSUC">
+      <End Role="TrangSuc" EntitySet="TrangSuc" />
+      <End Role="CTHD_TrangSuc" EntitySet="CTHD_TrangSuc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRANGSUC_LOAITRANGSUC" Association="Self.FK_TRANGSUC_LOAITRANGSUC">
+      <End Role="LoaiTrangSuc" EntitySet="LoaiTrangSuc" />
+      <End Role="TrangSuc" EntitySet="TrangSuc" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
