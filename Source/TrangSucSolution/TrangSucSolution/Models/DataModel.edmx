@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TRANGSUCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CTHD_TrangSuc">
+          <Key>
+            <PropertyRef Name="IDHoaDon" />
+            <PropertyRef Name="IDTrangSuc" />
+          </Key>
+          <Property Name="IDHoaDon" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDTrangSuc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SoLuong" Type="int" />
+          <Property Name="Gia" Type="int" />
+        </EntityType>
+        <EntityType Name="HoaDon">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgayLap" Type="date" />
+          <Property Name="NgayThanhToan" Type="date" />
+          <Property Name="NguoiLap" Type="nvarchar" MaxLength="50" />
+          <Property Name="TongTien" Type="int" />
+          <Property Name="HoTenKhachHang" Type="nvarchar" MaxLength="200" />
+          <Property Name="SdtKhachHang" Type="nvarchar" MaxLength="20" />
+          <Property Name="DiaChiKhachHang" Type="text" />
+          <Property Name="TinhTrang" Type="int" />
+        </EntityType>
+        <EntityType Name="LoaiTrangSuc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenLoai" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="200" />
+          <Property Name="DiaChi" Type="text" />
+          <Property Name="Sdt" Type="nvarchar" MaxLength="20" />
+          <Property Name="CMND" Type="nvarchar" MaxLength="20" />
+          <Property Name="NgaySinh" Type="date" />
+        </EntityType>
+        <EntityType Name="PhieuDatHang">
+          <Key>
+            <PropertyRef Name="SoPhieu" />
+          </Key>
+          <Property Name="SoPhieu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaMatHang" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenMatHang" Type="nvarchar" MaxLength="200" />
+          <Property Name="SoLuong" Type="int" />
+          <Property Name="DonGia" Type="int" />
+          <Property Name="TongGiaTri" Type="int" />
+          <Property Name="NgayLap" Type="date" />
+          <Property Name="NguoiLap" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TrangSuc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenTrangSuc" Type="nvarchar" MaxLength="200" />
+          <Property Name="LoaiTrangSuc" Type="nvarchar" MaxLength="50" />
+          <Property Name="GiaCong" Type="int" />
+          <Property Name="KhoiLuongTinh" Type="float" />
+          <Property Name="SoHat" Type="int" />
+          <Property Name="GiaHat" Type="int" />
+          <Property Name="HinhAnh" Type="text" />
+          <Property Name="SoLuong" Type="int" />
+        </EntityType>
+        <Association Name="FK_CTHD_HOADON">
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CTHD_TrangSuc" Type="Self.CTHD_TrangSuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDon">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CTHD_TrangSuc">
+              <PropertyRef Name="IDHoaDon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTHD_TRANGSUC">
+          <End Role="TrangSuc" Type="Self.TrangSuc" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CTHD_TrangSuc" Type="Self.CTHD_TrangSuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrangSuc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CTHD_TrangSuc">
+              <PropertyRef Name="IDTrangSuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhieuDatHang_NhanVien">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="PhieuDatHang" Type="Self.PhieuDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PhieuDatHang">
+              <PropertyRef Name="NguoiLap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhieuDatHang_TrangSuc">
+          <End Role="TrangSuc" Type="Self.TrangSuc" Multiplicity="0..1" />
+          <End Role="PhieuDatHang" Type="Self.PhieuDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrangSuc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PhieuDatHang">
+              <PropertyRef Name="MaMatHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANGSUC_LOAITRANGSUC">
+          <End Role="LoaiTrangSuc" Type="Self.LoaiTrangSuc" Multiplicity="0..1" />
+          <End Role="TrangSuc" Type="Self.TrangSuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiTrangSuc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TrangSuc">
+              <PropertyRef Name="LoaiTrangSuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_DELETE_HOADON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_DELETE_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_DELETE_TRANGSUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_INSERT_CTHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDHD" Type="nvarchar" Mode="In" />
+          <Parameter Name="IDTS" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gia" Type="int" Mode="In" />
+          <Parameter Name="SoLuong" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_INSERT_HOADON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ThanhToanLuon" Type="bit" Mode="In" />
+          <Parameter Name="NguoiLap" Type="nvarchar" Mode="In" />
+          <Parameter Name="TongTien" Type="int" Mode="In" />
+          <Parameter Name="HoTenKhach" Type="nvarchar" Mode="In" />
+          <Parameter Name="stdKhach" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiachiKhach" Type="text" Mode="In" />
+          <Parameter Name="TinhTrang" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_INSERT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiaChi" Type="text" Mode="In" />
+          <Parameter Name="sdt" Type="nvarchar" Mode="In" />
+          <Parameter Name="CMND" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgaySinh" Type="date" Mode="In" />
+        </Function>
+        <Function Name="SP_INSERT_TRANGSUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TenTrangSuc" Type="nvarchar" Mode="In" />
+          <Parameter Name="LoaiTrangSuc" Type="nvarchar" Mode="In" />
+          <Parameter Name="GiaCong" Type="int" Mode="In" />
+          <Parameter Name="KhoiLuongTinh" Type="float" Mode="In" />
+          <Parameter Name="SoHat" Type="int" Mode="In" />
+          <Parameter Name="GiaHat" Type="int" Mode="In" />
+          <Parameter Name="HinhAnh" Type="text" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATE_HOADON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NgayThanhToan" Type="date" Mode="In" />
+          <Parameter Name="TinhTrang" Type="int" Mode="In" />
+          <Parameter Name="ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATE_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiaChi" Type="text" Mode="In" />
+          <Parameter Name="sdt" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgaySinh" Type="date" Mode="In" />
+          <Parameter Name="ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATE_TRANGSUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="GiaCong" Type="int" Mode="In" />
+          <Parameter Name="GiaHat" Type="int" Mode="In" />
+          <Parameter Name="HinhAnh" Type="text" Mode="In" />
+        </Function>
+        <EntityContainer Name="TRANGSUCModelStoreContainer">
+          <EntitySet Name="CTHD_TrangSuc" EntityType="Self.CTHD_TrangSuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiTrangSuc" EntityType="Self.LoaiTrangSuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhieuDatHang" EntityType="Self.PhieuDatHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrangSuc" EntityType="Self.TrangSuc" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CTHD_HOADON" Association="Self.FK_CTHD_HOADON">
+            <End Role="HoaDon" EntitySet="HoaDon" />
+            <End Role="CTHD_TrangSuc" EntitySet="CTHD_TrangSuc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTHD_TRANGSUC" Association="Self.FK_CTHD_TRANGSUC">
+            <End Role="TrangSuc" EntitySet="TrangSuc" />
+            <End Role="CTHD_TrangSuc" EntitySet="CTHD_TrangSuc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuDatHang_NhanVien" Association="Self.FK_PhieuDatHang_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="PhieuDatHang" EntitySet="PhieuDatHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuDatHang_TrangSuc" Association="Self.FK_PhieuDatHang_TrangSuc">
+            <End Role="TrangSuc" EntitySet="TrangSuc" />
+            <End Role="PhieuDatHang" EntitySet="PhieuDatHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANGSUC_LOAITRANGSUC" Association="Self.FK_TRANGSUC_LOAITRANGSUC">
+            <End Role="LoaiTrangSuc" EntitySet="LoaiTrangSuc" />
+            <End Role="TrangSuc" EntitySet="TrangSuc" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TRANGSUCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CTHD_TrangSuc">
+          <Key>
+            <PropertyRef Name="IDHoaDon" />
+            <PropertyRef Name="IDTrangSuc" />
+          </Key>
+          <Property Name="IDHoaDon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDTrangSuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="Gia" Type="Int32" />
+          <NavigationProperty Name="HoaDon" Relationship="Self.FK_CTHD_HOADON" FromRole="CTHD_TrangSuc" ToRole="HoaDon" />
+          <NavigationProperty Name="TrangSuc" Relationship="Self.FK_CTHD_TRANGSUC" FromRole="CTHD_TrangSuc" ToRole="TrangSuc" />
+        </EntityType>
+        <EntityType Name="HoaDon">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayLap" Type="DateTime" Precision="0" />
+          <Property Name="NgayThanhToan" Type="DateTime" Precision="0" />
+          <Property Name="NguoiLap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TongTien" Type="Int32" />
+          <Property Name="HoTenKhachHang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SdtKhachHang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChiKhachHang" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TinhTrang" Type="Int32" />
+          <NavigationProperty Name="CTHD_TrangSuc" Relationship="Self.FK_CTHD_HOADON" FromRole="HoaDon" ToRole="CTHD_TrangSuc" />
+        </EntityType>
+        <EntityType Name="LoaiTrangSuc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenLoai" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TrangSucs" Relationship="Self.FK_TRANGSUC_LOAITRANGSUC" FromRole="LoaiTrangSuc" ToRole="TrangSuc" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CMND" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="PhieuDatHangs" Relationship="TRANGSUCModel.FK_PhieuDatHang_NhanVien" FromRole="NhanVien" ToRole="PhieuDatHang" />
+        </EntityType>
+        <EntityType Name="TrangSuc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenTrangSuc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LoaiTrangSuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GiaCong" Type="Int32" />
+          <Property Name="KhoiLuongTinh" Type="Double" />
+          <Property Name="SoHat" Type="Int32" />
+          <Property Name="GiaHat" Type="Int32" />
+          <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CTHD_TrangSuc" Relationship="Self.FK_CTHD_TRANGSUC" FromRole="TrangSuc" ToRole="CTHD_TrangSuc" />
+          <NavigationProperty Name="LoaiTrangSuc1" Relationship="Self.FK_TRANGSUC_LOAITRANGSUC" FromRole="TrangSuc" ToRole="LoaiTrangSuc" />
+          <Property Name="SoLuong" Type="Int32" />
+          <NavigationProperty Name="PhieuDatHangs" Relationship="TRANGSUCModel.FK_PhieuDatHang_TrangSuc" FromRole="TrangSuc" ToRole="PhieuDatHang" />
+        </EntityType>
+        <Association Name="FK_CTHD_HOADON">
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CTHD_TrangSuc" Type="Self.CTHD_TrangSuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDon">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CTHD_TrangSuc">
+              <PropertyRef Name="IDHoaDon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTHD_TRANGSUC">
+          <End Role="TrangSuc" Type="Self.TrangSuc" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CTHD_TrangSuc" Type="Self.CTHD_TrangSuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrangSuc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CTHD_TrangSuc">
+              <PropertyRef Name="IDTrangSuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANGSUC_LOAITRANGSUC">
+          <End Role="LoaiTrangSuc" Type="Self.LoaiTrangSuc" Multiplicity="0..1" />
+          <End Role="TrangSuc" Type="Self.TrangSuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiTrangSuc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TrangSuc">
+              <PropertyRef Name="LoaiTrangSuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TRANGSUCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CTHD_TrangSuc" EntityType="Self.CTHD_TrangSuc" />
+          <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
+          <EntitySet Name="LoaiTrangSucs" EntityType="Self.LoaiTrangSuc" />
+          <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+          <EntitySet Name="TrangSucs" EntityType="Self.TrangSuc" />
+          <AssociationSet Name="FK_CTHD_HOADON" Association="Self.FK_CTHD_HOADON">
+            <End Role="HoaDon" EntitySet="HoaDons" />
+            <End Role="CTHD_TrangSuc" EntitySet="CTHD_TrangSuc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTHD_TRANGSUC" Association="Self.FK_CTHD_TRANGSUC">
+            <End Role="TrangSuc" EntitySet="TrangSucs" />
+            <End Role="CTHD_TrangSuc" EntitySet="CTHD_TrangSuc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANGSUC_LOAITRANGSUC" Association="Self.FK_TRANGSUC_LOAITRANGSUC">
+            <End Role="LoaiTrangSuc" EntitySet="LoaiTrangSucs" />
+            <End Role="TrangSuc" EntitySet="TrangSucs" />
+          </AssociationSet>
+          <FunctionImport Name="SP_DELETE_HOADON">
+          <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DELETE_NHANVIEN">
+          <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DELETE_TRANGSUC">
+          <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERT_CTHD">
+            <Parameter Name="IDHD" Mode="In" Type="String" />
+            <Parameter Name="IDTS" Mode="In" Type="String" />
+            <Parameter Name="Gia" Mode="In" Type="Int32" />
+            <Parameter Name="SoLuong" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERT_HOADON">
+            <Parameter Name="ThanhToanLuon" Mode="In" Type="Boolean" />
+            <Parameter Name="NguoiLap" Mode="In" Type="String" />
+            <Parameter Name="TongTien" Mode="In" Type="Int32" />
+            <Parameter Name="HoTenKhach" Mode="In" Type="String" />
+            <Parameter Name="stdKhach" Mode="In" Type="String" />
+            <Parameter Name="DiachiKhach" Mode="In" Type="String" />
+            <Parameter Name="TinhTrang" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERT_NHANVIEN">
+            <Parameter Name="HoTen" Mode="In" Type="String" />
+            <Parameter Name="DiaChi" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="CMND" Mode="In" Type="String" />
+            <Parameter Name="NgaySinh" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERT_TRANGSUC">
+            <Parameter Name="TenTrangSuc" Mode="In" Type="String" />
+            <Parameter Name="LoaiTrangSuc" Mode="In" Type="String" />
+            <Parameter Name="GiaCong" Mode="In" Type="Int32" />
+            <Parameter Name="KhoiLuongTinh" Mode="In" Type="Double" />
+            <Parameter Name="SoHat" Mode="In" Type="Int32" />
+            <Parameter Name="GiaHat" Mode="In" Type="Int32" />
+            <Parameter Name="HinhAnh" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPDATE_HOADON">
+            <Parameter Name="NgayThanhToan" Mode="In" Type="DateTime" />
+            <Parameter Name="TinhTrang" Mode="In" Type="Int32" />
+            <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPDATE_NHANVIEN">
+            <Parameter Name="HoTen" Mode="In" Type="String" />
+            <Parameter Name="DiaChi" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="NgaySinh" Mode="In" Type="DateTime" />
+            <Parameter Name="ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPDATE_TRANGSUC">
+            <Parameter Name="ID" Mode="In" Type="String" />
+            <Parameter Name="GiaCong" Mode="In" Type="Int32" />
+            <Parameter Name="GiaHat" Mode="In" Type="Int32" />
+            <Parameter Name="HinhAnh" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="PhieuDatHangs" EntityType="TRANGSUCModel.PhieuDatHang" />
+          <AssociationSet Name="FK_PhieuDatHang_NhanVien" Association="TRANGSUCModel.FK_PhieuDatHang_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="PhieuDatHang" EntitySet="PhieuDatHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuDatHang_TrangSuc" Association="TRANGSUCModel.FK_PhieuDatHang_TrangSuc">
+            <End Role="TrangSuc" EntitySet="TrangSucs" />
+            <End Role="PhieuDatHang" EntitySet="PhieuDatHangs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="PhieuDatHang">
+          <Key>
+            <PropertyRef Name="SoPhieu" />
+          </Key>
+          <Property Name="SoPhieu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaMatHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenMatHang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="DonGia" Type="Int32" />
+          <Property Name="TongGiaTri" Type="Int32" />
+          <Property Name="NgayLap" Type="DateTime" Precision="0" />
+          <Property Name="NguoiLap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NhanVien" Relationship="TRANGSUCModel.FK_PhieuDatHang_NhanVien" FromRole="PhieuDatHang" ToRole="NhanVien" />
+          <NavigationProperty Name="TrangSuc" Relationship="TRANGSUCModel.FK_PhieuDatHang_TrangSuc" FromRole="PhieuDatHang" ToRole="TrangSuc" />
+        </EntityType>
+        <Association Name="FK_PhieuDatHang_NhanVien">
+          <End Type="TRANGSUCModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+          <End Type="TRANGSUCModel.PhieuDatHang" Role="PhieuDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PhieuDatHang">
+              <PropertyRef Name="NguoiLap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhieuDatHang_TrangSuc">
+          <End Type="TRANGSUCModel.TrangSuc" Role="TrangSuc" Multiplicity="0..1" />
+          <End Type="TRANGSUCModel.PhieuDatHang" Role="PhieuDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrangSuc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PhieuDatHang">
+              <PropertyRef Name="MaMatHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TRANGSUCModelStoreContainer" CdmEntityContainer="TRANGSUCEntities">
+          <EntitySetMapping Name="CTHD_TrangSuc">
+            <EntityTypeMapping TypeName="TRANGSUCModel.CTHD_TrangSuc">
+              <MappingFragment StoreEntitySet="CTHD_TrangSuc">
+                <ScalarProperty Name="IDHoaDon" ColumnName="IDHoaDon" />
+                <ScalarProperty Name="IDTrangSuc" ColumnName="IDTrangSuc" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDons">
+            <EntityTypeMapping TypeName="TRANGSUCModel.HoaDon">
+              <MappingFragment StoreEntitySet="HoaDon">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+                <ScalarProperty Name="NgayThanhToan" ColumnName="NgayThanhToan" />
+                <ScalarProperty Name="NguoiLap" ColumnName="NguoiLap" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="HoTenKhachHang" ColumnName="HoTenKhachHang" />
+                <ScalarProperty Name="SdtKhachHang" ColumnName="SdtKhachHang" />
+                <ScalarProperty Name="DiaChiKhachHang" ColumnName="DiaChiKhachHang" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiTrangSucs">
+            <EntityTypeMapping TypeName="TRANGSUCModel.LoaiTrangSuc">
+              <MappingFragment StoreEntitySet="LoaiTrangSuc">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanViens">
+            <EntityTypeMapping TypeName="TRANGSUCModel.NhanVien">
+              <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrangSucs">
+            <EntityTypeMapping TypeName="TRANGSUCModel.TrangSuc">
+              <MappingFragment StoreEntitySet="TrangSuc">
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TenTrangSuc" ColumnName="TenTrangSuc" />
+                <ScalarProperty Name="LoaiTrangSuc" ColumnName="LoaiTrangSuc" />
+                <ScalarProperty Name="GiaCong" ColumnName="GiaCong" />
+                <ScalarProperty Name="KhoiLuongTinh" ColumnName="KhoiLuongTinh" />
+                <ScalarProperty Name="SoHat" ColumnName="SoHat" />
+                <ScalarProperty Name="GiaHat" ColumnName="GiaHat" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_DELETE_HOADON" FunctionName="TRANGSUCModel.Store.SP_DELETE_HOADON" />
+          <FunctionImportMapping FunctionImportName="SP_DELETE_NHANVIEN" FunctionName="TRANGSUCModel.Store.SP_DELETE_NHANVIEN" />
+          <FunctionImportMapping FunctionImportName="SP_DELETE_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_DELETE_TRANGSUC" />
+          <FunctionImportMapping FunctionImportName="SP_INSERT_CTHD" FunctionName="TRANGSUCModel.Store.SP_INSERT_CTHD" />
+          <FunctionImportMapping FunctionImportName="SP_INSERT_HOADON" FunctionName="TRANGSUCModel.Store.SP_INSERT_HOADON" />
+          <FunctionImportMapping FunctionImportName="SP_INSERT_NHANVIEN" FunctionName="TRANGSUCModel.Store.SP_INSERT_NHANVIEN" />
+          <FunctionImportMapping FunctionImportName="SP_INSERT_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_INSERT_TRANGSUC" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATE_HOADON" FunctionName="TRANGSUCModel.Store.SP_UPDATE_HOADON" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATE_NHANVIEN" FunctionName="TRANGSUCModel.Store.SP_UPDATE_NHANVIEN" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATE_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_UPDATE_TRANGSUC" />
+          <EntitySetMapping Name="PhieuDatHangs">
+            <EntityTypeMapping TypeName="TRANGSUCModel.PhieuDatHang">
+              <MappingFragment StoreEntitySet="PhieuDatHang">
+                <ScalarProperty Name="NguoiLap" ColumnName="NguoiLap" />
+                <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+                <ScalarProperty Name="TongGiaTri" ColumnName="TongGiaTri" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="TenMatHang" ColumnName="TenMatHang" />
+                <ScalarProperty Name="MaMatHang" ColumnName="MaMatHang" />
+                <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

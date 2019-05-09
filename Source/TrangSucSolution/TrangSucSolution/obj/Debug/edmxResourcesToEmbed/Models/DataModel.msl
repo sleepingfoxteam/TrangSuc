@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TRANGSUCModelStoreContainer" CdmEntityContainer="TRANGSUCEntities">
+    <EntitySetMapping Name="CTHD_TrangSuc">
+      <EntityTypeMapping TypeName="TRANGSUCModel.CTHD_TrangSuc">
+        <MappingFragment StoreEntitySet="CTHD_TrangSuc">
+          <ScalarProperty Name="IDHoaDon" ColumnName="IDHoaDon" />
+          <ScalarProperty Name="IDTrangSuc" ColumnName="IDTrangSuc" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="Gia" ColumnName="Gia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoaDons">
+      <EntityTypeMapping TypeName="TRANGSUCModel.HoaDon">
+        <MappingFragment StoreEntitySet="HoaDon">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+          <ScalarProperty Name="NgayThanhToan" ColumnName="NgayThanhToan" />
+          <ScalarProperty Name="NguoiLap" ColumnName="NguoiLap" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+          <ScalarProperty Name="HoTenKhachHang" ColumnName="HoTenKhachHang" />
+          <ScalarProperty Name="SdtKhachHang" ColumnName="SdtKhachHang" />
+          <ScalarProperty Name="DiaChiKhachHang" ColumnName="DiaChiKhachHang" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiTrangSucs">
+      <EntityTypeMapping TypeName="TRANGSUCModel.LoaiTrangSuc">
+        <MappingFragment StoreEntitySet="LoaiTrangSuc">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhanViens">
+      <EntityTypeMapping TypeName="TRANGSUCModel.NhanVien">
+        <MappingFragment StoreEntitySet="NhanVien">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrangSucs">
+      <EntityTypeMapping TypeName="TRANGSUCModel.TrangSuc">
+        <MappingFragment StoreEntitySet="TrangSuc">
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenTrangSuc" ColumnName="TenTrangSuc" />
+          <ScalarProperty Name="LoaiTrangSuc" ColumnName="LoaiTrangSuc" />
+          <ScalarProperty Name="GiaCong" ColumnName="GiaCong" />
+          <ScalarProperty Name="KhoiLuongTinh" ColumnName="KhoiLuongTinh" />
+          <ScalarProperty Name="SoHat" ColumnName="SoHat" />
+          <ScalarProperty Name="GiaHat" ColumnName="GiaHat" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_DELETE_HOADON" FunctionName="TRANGSUCModel.Store.SP_DELETE_HOADON" />
+    <FunctionImportMapping FunctionImportName="SP_DELETE_NHANVIEN" FunctionName="TRANGSUCModel.Store.SP_DELETE_NHANVIEN" />
+    <FunctionImportMapping FunctionImportName="SP_DELETE_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_DELETE_TRANGSUC" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_CTHD" FunctionName="TRANGSUCModel.Store.SP_INSERT_CTHD" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_HOADON" FunctionName="TRANGSUCModel.Store.SP_INSERT_HOADON" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_NHANVIEN" FunctionName="TRANGSUCModel.Store.SP_INSERT_NHANVIEN" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_INSERT_TRANGSUC" />
+    <FunctionImportMapping FunctionImportName="SP_UPDATE_HOADON" FunctionName="TRANGSUCModel.Store.SP_UPDATE_HOADON" />
+    <FunctionImportMapping FunctionImportName="SP_UPDATE_NHANVIEN" FunctionName="TRANGSUCModel.Store.SP_UPDATE_NHANVIEN" />
+    <FunctionImportMapping FunctionImportName="SP_UPDATE_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_UPDATE_TRANGSUC" />
+  </EntityContainerMapping>
+</Mapping>
