@@ -76,7 +76,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TinhTrang, "Tình trạng", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TinhTrang, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("TinhTrang", null, htmlAttributes: new { @class = "form-control", id = "TinhTrang" })
                 @Html.ValidationMessageFor(model => model.TinhTrang, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -105,5 +105,19 @@
                 changeYear: true
             });
         });
+
+        //Thêm tình trạng hóa đơn
+        var optionTinhTrang = {
+            val1: "Chờ thanh toán",
+            val2: "Đã thanh toán"
+        };
+
+        var mySelect = $('#TinhTrang');
+        $each(optionTinhTrang, function (val, text) {
+            mySelect.append(
+                $('<option></option>').val(val).html(text)
+            );
+        });
+
     </script>
 }

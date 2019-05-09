@@ -11,7 +11,8 @@ namespace TrangSucSolution.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TrangSuc
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,7 @@ namespace TrangSucSolution.Models
             this.PhieuDatHangs = new HashSet<PhieuDatHang>();
             this.PhieuXuatHangs = new HashSet<PhieuXuatHang>();
         }
-    
+
         public string ID { get; set; }
         public string TenTrangSuc { get; set; }
         public string LoaiTrangSuc { get; set; }

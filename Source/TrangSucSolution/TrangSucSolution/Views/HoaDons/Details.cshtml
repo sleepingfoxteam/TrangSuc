@@ -4,6 +4,13 @@
     ViewBag.Title = "Details";
 }
 
+@{
+    List<SelectListItem> items = new List<SelectListItem>();
+    items.Add(new SelectListItem { Text = "Chờ thanh toán", Value = "0" });
+    items.Add(new SelectListItem { Text = "Đã thanh toán", Value = "1" });
+    items.Add(new SelectListItem { Text = "Chờ xác nhận", Value = "2" });
+}
+
 <h2>Details</h2>
 
 <div>
@@ -70,7 +77,13 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TinhTrang)
+            @foreach (var tinhTrang in items)
+            {
+                if (Model.TinhTrang.ToString() == tinhTrang.Value)
+                {
+                    @Html.DisplayFor(modelItem => tinhTrang.Text);
+                }
+            }
         </dd>
 
         <dt>
