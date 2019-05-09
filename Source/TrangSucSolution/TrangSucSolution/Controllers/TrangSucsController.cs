@@ -120,6 +120,17 @@ namespace TrangSucSolution.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: TrangSucs/Pdh
+        public ActionResult Pdh()
+        {
+            return RedirectToAction("Create", "PhieuDatHangs");
+        }
+
+        public ActionResult Pxh()
+        {
+            return RedirectToAction("Create", "PhieuXuatHangs");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

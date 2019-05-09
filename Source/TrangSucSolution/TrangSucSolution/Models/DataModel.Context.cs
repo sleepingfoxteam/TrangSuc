@@ -33,6 +33,7 @@ namespace TrangSucSolution.Models
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<TrangSuc> TrangSucs { get; set; }
         public virtual DbSet<PhieuDatHang> PhieuDatHangs { get; set; }
+        public virtual DbSet<PhieuXuatHang> PhieuXuatHangs { get; set; }
     
         public virtual int SP_DELETE_HOADON(string iD)
         {

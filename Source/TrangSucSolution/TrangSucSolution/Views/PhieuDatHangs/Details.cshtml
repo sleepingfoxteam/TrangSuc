@@ -1,0 +1,64 @@
+﻿@model TrangSucSolution.Models.PhieuDatHang
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Phiếu đặt hàng</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Số phiếu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoPhieu)
+        </dd>
+        <dt>
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            Đơn giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+
+        <dt>
+            Tổng giá trị
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongGiaTri)
+        </dd>
+
+        <dt>
+            Ngày lập
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayLap)
+        </dd>
+
+        <dt>
+            Người lập
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhanVien.HoTen)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SoPhieu }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

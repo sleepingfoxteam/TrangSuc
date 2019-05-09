@@ -1,0 +1,89 @@
+﻿@model TrangSucSolution.Models.HoaDon
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Hóa đơn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt>
+            Ngày lập
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayLap)
+        </dd>
+
+        <dt>
+            Ngày thanh toán
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayThanhToan)
+        </dd>
+
+        <dt>
+            Tổng tiền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongTien)
+        </dd>
+
+        <dt>
+            Họ tên khách hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTenKhachHang)
+        </dd>
+
+        <dt>
+            SĐT khách hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SdtKhachHang)
+        </dd>
+
+        <dt>
+            Địa chỉ khách hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiKhachHang)
+        </dd>
+
+        <dt>
+            Tình trạng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+
+        <dt>
+            Người lập
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhanVien.HoTen)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

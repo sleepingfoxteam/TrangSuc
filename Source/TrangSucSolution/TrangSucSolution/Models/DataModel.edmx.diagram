@@ -16,6 +16,10 @@
         <EntityTypeShape EntityType="TRANGSUCModel.PhieuDatHang" Width="1.5" PointX="8" PointY="4.5" />
         <AssociationConnector Association="TRANGSUCModel.FK_PhieuDatHang_NhanVien" />
         <AssociationConnector Association="TRANGSUCModel.FK_PhieuDatHang_TrangSuc" />
+        <EntityTypeShape EntityType="TRANGSUCModel.PhieuXuatHang" Width="1.5" PointX="8" PointY="0.75" />
+        <AssociationConnector Association="TRANGSUCModel.FK_PhieuXuatHang_NhanVien" />
+        <AssociationConnector Association="TRANGSUCModel.FK_PhieuXuatHang_TrangSuc" />
+        <AssociationConnector Association="TRANGSUCModel.FK_HoaDon_NhanVien" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

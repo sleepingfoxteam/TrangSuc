@@ -1,0 +1,74 @@
+﻿@model TrangSucSolution.Models.PhieuXuatHang
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PhieuXuatHang</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenMatHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenMatHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongGiaTri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongGiaTri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayXuat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayXuat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhanVien.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhanVien.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangSuc.TenTrangSuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangSuc.TenTrangSuc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SoPhieu }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
