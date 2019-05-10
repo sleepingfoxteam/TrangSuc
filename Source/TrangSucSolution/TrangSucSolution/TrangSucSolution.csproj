@@ -136,10 +136,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HoaDonsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\NhanViensController.cs" />
     <Compile Include="Controllers\PhieuDatHangsController.cs" />
     <Compile Include="Controllers\PhieuXuatHangsController.cs" />
-    <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Controllers\TrangSucsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -319,7 +319,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\NhanViens\Create.cshtml" />
     <Content Include="Views\NhanViens\Delete.cshtml" />
     <Content Include="Views\NhanViens\Details.cshtml" />
@@ -345,8 +344,12 @@
     <Content Include="Views\HoaDons\Details.cshtml" />
     <Content Include="Views\HoaDons\Edit.cshtml" />
     <Content Include="Views\HoaDons\Index.cshtml" />
-    <Content Include="Views\TrangChu\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutTrangChu.cshtml" />
+    <Content Include="Views\Index\Create.cshtml" />
+    <Content Include="Views\Index\Delete.cshtml" />
+    <Content Include="Views\Index\Details.cshtml" />
+    <Content Include="Views\Index\Edit.cshtml" />
+    <Content Include="Views\Index\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
