@@ -1,0 +1,82 @@
+﻿@model TrangSucSolution.Models.TrangSuc
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SẢN PHẨM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên trang sức
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTrangSuc)
+        </dd>
+
+        <dt>
+            Gia công
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaCong)
+        </dd>
+
+        <dt>
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            Khối lượng tịnh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhoiLuongTinh)
+        </dd>
+
+        <dt>
+            Số hạt
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoHat)
+        </dd>
+
+        <dt>
+            Giá hạt
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaHat)
+        </dd>
+
+        <dt>
+            Hình ảnh
+        </dt>
+
+        <dd>
+            <img src="../../Image/@Html.DisplayFor(model => model.HinhAnh)" />
+        </dd>
+
+        <dt>
+            Loại trang sức
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiTrangSuc1.TenLoai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

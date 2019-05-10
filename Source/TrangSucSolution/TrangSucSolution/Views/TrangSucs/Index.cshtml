@@ -1,0 +1,75 @@
+﻿@model IEnumerable<TrangSucSolution.Models.TrangSuc>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>QUẢN LÝ KHO</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên trang sức
+        </th>
+        <th>
+            Gia công
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Khối lượng tịnh
+        </th>
+        <th>
+            Số hạt
+        </th>
+        <th>
+            Giá hạt
+        </th>
+        <th>
+            Hình ảnh
+        </th>
+        <th>
+            Tên loại
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenTrangSuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaCong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KhoiLuongTinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoHat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaHat)
+        </td>
+        <td>
+            <img src="../Image/@Html.DisplayFor(modelItem => item.HinhAnh)" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiTrangSuc1.TenLoai)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+}
+
+</table>
