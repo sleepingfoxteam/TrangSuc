@@ -13,11 +13,11 @@ function InitialAddToCartEvent() {
             method: "GET",
             url: 'Index/AddToCart?id=' + id,
             success: function (result) {
-                if (result === 1) {
-                    alert('Thành công');
+                if (result == 1) {
+                    alert('thanh cong');
                 }
                 else {
-                    alert("không thành công");
+                    alert('khong thanh cong');
                 }
             }
         });

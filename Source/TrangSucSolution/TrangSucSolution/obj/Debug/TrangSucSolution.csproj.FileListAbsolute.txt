@@ -165,3 +165,4 @@ E:\WorkSpace\DoAn\TrangSuc\Source\TrangSucSolution\TrangSucSolution\bin\System.D
 E:\WorkSpace\DoAn\TrangSuc\Source\TrangSucSolution\TrangSucSolution\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 E:\WorkSpace\DoAn\TrangSuc\Source\TrangSucSolution\TrangSucSolution\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\WorkSpace\DoAn\TrangSuc\Source\TrangSucSolution\TrangSucSolution\obj\Debug\TrangSucSolution.csproj.CopyComplete
+E:\WorkSpace\DoAn\TrangSuc\Source\TrangSucSolution\TrangSucSolution\obj\Debug\TrangSucSolution.csprojAssemblyReference.cache

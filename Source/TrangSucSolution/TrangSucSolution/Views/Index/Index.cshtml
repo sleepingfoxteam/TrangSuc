@@ -4,25 +4,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
 }
-
-<div class="row">
-    <div class="col-lg-2 col-md-2 col-sm-2">
-        <button class="btn-trangchu" style="border:none;background:white;font-size:20px;" type="button"
-                onclick="location.href='@Url.Action("Index", "Index")'">
-            <i style="font-size: 20px;" class="fas fa-home"></i> CỬA HÀNG
-        </button>
-    </div>
-    <div class="col-lg-8 col-md-8 col-sm-8">
-
-    </div>
-    <div class="col-lg-2 col-md-2 col-sm-2">
-        <button style="border:none; background:white;" type="button"
-                onclick="location.href='@Url.Action("GioHang", "Index")'">
-            <i style="font-size: 20px;" class="fas fa-shopping-bag"></i> GIỎ HÀNG
-        </button>
-    </div>
-</div>
-<hr />
 <div class="row">
     <div class="col-lg-12 col-md-12">
         <div class="topnav">
@@ -35,7 +16,6 @@
         </div>
     </div>
 </div>
-
 <!--BANNER CAROUSEL-->
 <div class="row" style="margin-top:15px;">
     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -95,7 +75,7 @@
                                 @Html.DisplayFor(modelItem => item.GiaHat)
                             </h5>
                             <button type="button" class="btn-primary btn-cart" data-id="@item.ID">Them Vao Gio Hang</button>
-</div>
+                        </div>
                     }
                     count++;
                 }
@@ -126,7 +106,7 @@
                             <h5 class="text-center" style="color: orangered;">
                                 @Html.DisplayFor(modelItem => item.GiaHat)
                             </h5>
-                            
+
                         </div>
                         countNhan++;
                     }

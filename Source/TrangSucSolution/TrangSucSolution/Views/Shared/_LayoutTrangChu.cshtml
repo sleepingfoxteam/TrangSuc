@@ -14,6 +14,24 @@
 </head>
 <body>
     <div class="container body-content">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <button class="btn-trangchu" style="border:none;background:white;font-size:20px;" type="button"
+                        onclick="location.href='@Url.Action("Index", "Index")'">
+                    <i style="font-size: 20px;" class="fas fa-home"></i> CỬA HÀNG
+                </button>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8">
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <button style="border:none; background:white;" type="button"
+                        onclick="location.href='@Url.Action("GioHang", "Index")'">
+                    <i style="font-size: 20px;" class="fas fa-shopping-bag"></i> GIỎ HÀNG
+                </button>
+            </div>
+        </div>
+        <hr />
         @RenderBody()
         <hr />
         <footer>
@@ -23,7 +41,7 @@
                     <p>Giấy chứng nhận đăng ký kinh doanh: abcxyz</p>
                 </div>
             </div>
-            
+
         </footer>
     </div>
 
