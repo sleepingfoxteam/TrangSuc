@@ -38,7 +38,7 @@ namespace TrangSucSolution.Controllers
             return 1;
         }
         // GET: Index/Details/5
-        /*public ActionResult Details(string id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -50,7 +50,7 @@ namespace TrangSucSolution.Controllers
                 return HttpNotFound();
             }
             return View(trangSuc);
-        }*/
+        }
 
         /* ActionResult Edit(string id)
         {

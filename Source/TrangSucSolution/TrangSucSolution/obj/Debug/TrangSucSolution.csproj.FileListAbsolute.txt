@@ -81,7 +81,6 @@ E:\PTTK_HTTT\TrangSuc\Source\TrangSucSolution\TrangSucSolution\bin\EntityFramewo
 E:\PTTK_HTTT\TrangSuc\Source\TrangSucSolution\TrangSucSolution\bin\EntityFramework.SqlServer.dll
 E:\PTTK_HTTT\TrangSuc\Source\TrangSucSolution\TrangSucSolution\bin\EntityFramework.xml
 E:\PTTK_HTTT\TrangSuc\Source\TrangSucSolution\TrangSucSolution\bin\EntityFramework.SqlServer.xml
-E:\PTTK_HTTT\TrangSuc\Source\TrangSucSolution\TrangSucSolution\obj\Debug\TrangSucSolution.csprojAssemblyReference.cache
 E:\WorkSpace\DoAn\TrangSuc\Source\TrangSucSolution\TrangSucSolution\obj\Debug\TrangSucSolution.csproj.CoreCompileInputs.cache
 E:\WorkSpace\DoAn\TrangSuc\Source\TrangSucSolution\TrangSucSolution\obj\Debug\TrangSucSolution.dll
 E:\WorkSpace\DoAn\TrangSuc\Source\TrangSucSolution\TrangSucSolution\obj\Debug\TrangSucSolution.pdb
@@ -166,3 +165,4 @@ E:\WorkSpace\DoAn\TrangSuc\Source\TrangSucSolution\TrangSucSolution\bin\Microsof
 E:\WorkSpace\DoAn\TrangSuc\Source\TrangSucSolution\TrangSucSolution\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\WorkSpace\DoAn\TrangSuc\Source\TrangSucSolution\TrangSucSolution\obj\Debug\TrangSucSolution.csproj.CopyComplete
 E:\WorkSpace\DoAn\TrangSuc\Source\TrangSucSolution\TrangSucSolution\obj\Debug\TrangSucSolution.csprojAssemblyReference.cache
+E:\PTTK_HTTT\TrangSuc\Source\TrangSucSolution\TrangSucSolution\obj\Debug\TrangSucSolution.csprojAssemblyReference.cache
