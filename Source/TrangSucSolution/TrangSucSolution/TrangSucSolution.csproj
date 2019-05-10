@@ -134,10 +134,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HoaDonsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NhanViensController.cs" />
+    <Compile Include="Controllers\PhieuDatHangsController.cs" />
+    <Compile Include="Controllers\PhieuXuatHangsController.cs" />
     <Compile Include="Controllers\TrangSucsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -350,6 +354,18 @@
     <Content Include="Views\Index\Details.cshtml" />
     <Content Include="Views\Index\Edit.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
+    <Content Include="Views\PhieuDatHangs\Create.cshtml" />
+    <Content Include="Views\PhieuDatHangs\Delete.cshtml" />
+    <Content Include="Views\PhieuDatHangs\Details.cshtml" />
+    <Content Include="Views\PhieuDatHangs\Edit.cshtml" />
+    <Content Include="Views\PhieuDatHangs\Index.cshtml" />
+    <Content Include="Views\PhieuXuatHangs\Create.cshtml" />
+    <Content Include="Views\PhieuXuatHangs\Delete.cshtml" />
+    <Content Include="Views\PhieuXuatHangs\Details.cshtml" />
+    <Content Include="Views\PhieuXuatHangs\Edit.cshtml" />
+    <Content Include="Views\PhieuXuatHangs\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
