@@ -39,5 +39,10 @@ namespace TrangSucSolution.Models
         public virtual ICollection<PDH_TrangSuc> PDH_TrangSuc { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PXH_TrangSuc> PXH_TrangSuc { get; set; }
+
+        public string toString()
+        {
+            return this.ID + ";" + this.TenTrangSuc;
+        }
     }
 }

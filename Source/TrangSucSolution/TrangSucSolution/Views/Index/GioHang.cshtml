@@ -1,0 +1,30 @@
+﻿@model IEnumerable<TrangSucSolution.Models.TrangSuc>
+
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
+}
+
+<h2>GioHang</h2>
+@{
+    int count = 0;
+    foreach (var item in Model)
+    {
+        if (count < 12)
+        {
+            <div class="item item-size">
+                <img src="../../Image/@Html.DisplayFor(modelItem => item.HinhAnh)">
+                <h4 class="text-center">
+                    @Html.ActionLink(item.TenTrangSuc, "Details", new { id = item.ID }, new { @class = "aa-link" })
+                </h4>
+                <h5 class="text-center" style="color: orangered;">
+                    @Html.DisplayFor(modelItem => item.GiaHat)
+                </h5>
+                <button type="button" class="btn-primary btn-cart" data-id="@item.ID">Them Vao Gio Hang</button>
+            </div>
+        }
+        count++;
+    }
+    count = 0;
+}
+

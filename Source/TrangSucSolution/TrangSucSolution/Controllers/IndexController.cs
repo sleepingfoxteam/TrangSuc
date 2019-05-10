@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -14,6 +15,8 @@ namespace TrangSucSolution.Controllers
     {
         private TRANGSUCEntities db = new TRANGSUCEntities();
 
+        static List<TrangSuc> listgiohang = new List<TrangSuc>();
+
         // GET: Index
         public ActionResult Index()
         {
@@ -21,8 +24,21 @@ namespace TrangSucSolution.Controllers
             return View(trangSucs.ToList());
         }
 
+        public ActionResult GioHang()
+        {
+            return View(IndexController.listgiohang);
+        }
+
+        public int AddToCart(string id)
+        {
+            var trangsuc = db.TrangSucs.Where(t => t.ID == id);
+            if (trangsuc == null) return -1;
+            TrangSuc ts = trangsuc.ToList<TrangSuc>().ElementAt(0);
+            IndexController.listgiohang.Add(ts);
+            return 1;
+        }
         // GET: Index/Details/5
-        public ActionResult Details(string id)
+        /*public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -34,9 +50,9 @@ namespace TrangSucSolution.Controllers
                 return HttpNotFound();
             }
             return View(trangSuc);
-        }
+        }*/
 
-        public ActionResult Edit(string id)
+        /* ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -49,12 +65,12 @@ namespace TrangSucSolution.Controllers
             }
             ViewBag.LoaiTrangSuc = new SelectList(db.LoaiTrangSucs, "ID", "TenLoai", trangSuc.LoaiTrangSuc);
             return View(trangSuc);
-        }
+        }*/
 
         // POST: Index/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,TenTrangSuc,LoaiTrangSuc,GiaCong,KhoiLuongTinh,SoHat,GiaHat,HinhAnh,SoLuong")] TrangSuc trangSuc)
         {
@@ -66,7 +82,7 @@ namespace TrangSucSolution.Controllers
             }
             ViewBag.LoaiTrangSuc = new SelectList(db.LoaiTrangSucs, "ID", "TenLoai", trangSuc.LoaiTrangSuc);
             return View(trangSuc);
-        }
+        */
         
         protected override void Dispose(bool disposing)
         {

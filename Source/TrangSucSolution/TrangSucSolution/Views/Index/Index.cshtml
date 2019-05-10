@@ -17,8 +17,8 @@
     </div>
     <div class="col-lg-2 col-md-2 col-sm-2">
         <button style="border:none; background:white;" type="button"
-                onclick="location.href='@Url.Action("Index", "Index")'">
-            <i style="font-size: 20px;" class="fas fa-shopping-bag"></i> TÚI HÀNG
+                onclick="location.href='@Url.Action("GioHang", "Index")'">
+            <i style="font-size: 20px;" class="fas fa-shopping-bag"></i> GIỎ HÀNG
         </button>
     </div>
 </div>
@@ -78,7 +78,6 @@
 <!--carousel SẢN PHẨM MỚI -->
 <div class="row">
     <h3 class="text-center" , style="margin-bottom: 20px;">SẢN PHẨM MỚI</h3>
-    <button type="button" class="btn btn-default text-center" style="outline:none;margin-left: 50%;transform: translate(-50%, 0);">Xem thêm</button>
     <div class="col-lg-12 col-md-12">
         <div class="owl-carousel owl-theme">
             @{
@@ -95,7 +94,8 @@
                             <h5 class="text-center" style="color: orangered;">
                                 @Html.DisplayFor(modelItem => item.GiaHat)
                             </h5>
-                        </div>
+                            <button type="button" class="btn-primary btn-cart" data-id="@item.ID">Them Vao Gio Hang</button>
+</div>
                     }
                     count++;
                 }
@@ -110,7 +110,6 @@
 <!--carousel NHẪN -->
 <div class="row">
     <h3 class="text-center" , style="margin-bottom: 20px;">NHẪN</h3>
-    <button type="button" class="btn btn-default text-center" style="outline:none;margin-left: 50%;transform: translate(-50%, 0);">Xem thêm</button>
     <div class="col-lg-12 col-md-12">
         <div class="owl-carousel owl-theme">
             @{
@@ -127,6 +126,7 @@
                             <h5 class="text-center" style="color: orangered;">
                                 @Html.DisplayFor(modelItem => item.GiaHat)
                             </h5>
+                            
                         </div>
                         countNhan++;
                     }
