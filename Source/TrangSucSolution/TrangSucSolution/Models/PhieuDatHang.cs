@@ -14,16 +14,19 @@ namespace TrangSucSolution.Models
     
     public partial class PhieuDatHang
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PhieuDatHang()
+        {
+            this.PDH_TrangSuc = new HashSet<PDH_TrangSuc>();
+        }
+    
         public string SoPhieu { get; set; }
-        public string MaMatHang { get; set; }
-        public string TenMatHang { get; set; }
-        public Nullable<int> SoLuong { get; set; }
-        public Nullable<int> DonGia { get; set; }
         public Nullable<int> TongGiaTri { get; set; }
         public Nullable<System.DateTime> NgayLap { get; set; }
         public string NguoiLap { get; set; }
     
         public virtual NhanVien NhanVien { get; set; }
-        public virtual TrangSuc TrangSuc { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PDH_TrangSuc> PDH_TrangSuc { get; set; }
     }
 }

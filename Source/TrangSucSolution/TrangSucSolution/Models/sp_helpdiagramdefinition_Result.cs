@@ -10,17 +10,10 @@
 namespace TrangSucSolution.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class CTHD_TrangSuc
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public string IDHoaDon { get; set; }
-        public string IDTrangSuc { get; set; }
-        public Nullable<int> SoLuong { get; set; }
-        public string TenTrangSuc { get; set; }
-        public Nullable<int> Gia { get; set; }
-    
-        public virtual HoaDon HoaDon { get; set; }
-        public virtual TrangSuc TrangSuc { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

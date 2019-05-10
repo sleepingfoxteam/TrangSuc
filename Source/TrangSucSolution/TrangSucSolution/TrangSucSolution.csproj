@@ -138,8 +138,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\NhanViensController.cs" />
-    <Compile Include="Controllers\PhieuDatHangsController.cs" />
-    <Compile Include="Controllers\PhieuXuatHangsController.cs" />
     <Compile Include="Controllers\TrangSucsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -171,10 +169,22 @@
     <Compile Include="Models\NhanVien.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PDH_TrangSuc.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PhieuDatHang.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhieuXuatHang.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PXH_TrangSuc.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TrangSuc.cs">
@@ -274,8 +284,8 @@
     <Content Include="Image\gvdrwb94950.100-vong-tay-pnj-vang-trang-10k-dinh-da-ecz-swarovski-1.png" />
     <Content Include="Models\DataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DataModel.Context.cs</LastGenOutput>
       <DependentUpon>DataModel.edmx</DependentUpon>
+      <LastGenOutput>DataModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\DataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -329,16 +339,6 @@
     <Content Include="Views\TrangSucs\Details.cshtml" />
     <Content Include="Views\TrangSucs\Edit.cshtml" />
     <Content Include="Views\TrangSucs\Index.cshtml" />
-    <Content Include="Views\PhieuDatHangs\Create.cshtml" />
-    <Content Include="Views\PhieuDatHangs\Delete.cshtml" />
-    <Content Include="Views\PhieuDatHangs\Details.cshtml" />
-    <Content Include="Views\PhieuDatHangs\Edit.cshtml" />
-    <Content Include="Views\PhieuDatHangs\Index.cshtml" />
-    <Content Include="Views\PhieuXuatHangs\Create.cshtml" />
-    <Content Include="Views\PhieuXuatHangs\Delete.cshtml" />
-    <Content Include="Views\PhieuXuatHangs\Details.cshtml" />
-    <Content Include="Views\PhieuXuatHangs\Edit.cshtml" />
-    <Content Include="Views\PhieuXuatHangs\Index.cshtml" />
     <Content Include="Views\HoaDons\Create.cshtml" />
     <Content Include="Views\HoaDons\Delete.cshtml" />
     <Content Include="Views\HoaDons\Details.cshtml" />

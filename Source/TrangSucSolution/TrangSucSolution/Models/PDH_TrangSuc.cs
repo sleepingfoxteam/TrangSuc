@@ -12,15 +12,15 @@ namespace TrangSucSolution.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CTHD_TrangSuc
+    public partial class PDH_TrangSuc
     {
-        public string IDHoaDon { get; set; }
         public string IDTrangSuc { get; set; }
+        public string SoPhieu { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public string TenTrangSuc { get; set; }
-        public Nullable<int> Gia { get; set; }
+        public Nullable<int> DonGia { get; set; }
     
-        public virtual HoaDon HoaDon { get; set; }
+        public virtual PhieuDatHang PhieuDatHang { get; set; }
         public virtual TrangSuc TrangSuc { get; set; }
     }
 }

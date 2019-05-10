@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\PTTK_HTTT\TrangSuc\Source\TrangSucSolution\TrangSucSolution\Models\DataModel.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\WorkSpace\DoAn\TrangSuc\Source\TrangSucSolution\TrangSucSolution\Models\DataModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -11,18 +11,17 @@ namespace TrangSucSolution.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class TrangSuc
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TrangSuc()
         {
             this.CTHD_TrangSuc = new HashSet<CTHD_TrangSuc>();
-            this.PhieuDatHangs = new HashSet<PhieuDatHang>();
-            this.PhieuXuatHangs = new HashSet<PhieuXuatHang>();
+            this.PDH_TrangSuc = new HashSet<PDH_TrangSuc>();
+            this.PXH_TrangSuc = new HashSet<PXH_TrangSuc>();
         }
-
+    
         public string ID { get; set; }
         public string TenTrangSuc { get; set; }
         public string LoaiTrangSuc { get; set; }
@@ -37,8 +36,8 @@ namespace TrangSucSolution.Models
         public virtual ICollection<CTHD_TrangSuc> CTHD_TrangSuc { get; set; }
         public virtual LoaiTrangSuc LoaiTrangSuc1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhieuDatHang> PhieuDatHangs { get; set; }
+        public virtual ICollection<PDH_TrangSuc> PDH_TrangSuc { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhieuXuatHang> PhieuXuatHangs { get; set; }
+        public virtual ICollection<PXH_TrangSuc> PXH_TrangSuc { get; set; }
     }
 }
