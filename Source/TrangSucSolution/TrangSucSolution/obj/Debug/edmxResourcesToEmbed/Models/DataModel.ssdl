@@ -42,6 +42,32 @@
     <Property Name="CMND" Type="nvarchar" MaxLength="20" />
     <Property Name="NgaySinh" Type="date" />
   </EntityType>
+  <EntityType Name="PhieuDatHang">
+    <Key>
+      <PropertyRef Name="SoPhieu" />
+    </Key>
+    <Property Name="SoPhieu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaMatHang" Type="nvarchar" MaxLength="50" />
+    <Property Name="TenMatHang" Type="nvarchar" MaxLength="200" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="DonGia" Type="int" />
+    <Property Name="TongGiaTri" Type="int" />
+    <Property Name="NgayLap" Type="date" />
+    <Property Name="NguoiLap" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PhieuXuatHang">
+    <Key>
+      <PropertyRef Name="SoPhieu" />
+    </Key>
+    <Property Name="SoPhieu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaMatHang" Type="nvarchar" MaxLength="50" />
+    <Property Name="TenMatHang" Type="nvarchar" MaxLength="200" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="DonGia" Type="int" />
+    <Property Name="TongGiaTri" Type="int" />
+    <Property Name="NgayXuat" Type="date" />
+    <Property Name="NguoiXuat" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="TrangSuc">
     <Key>
       <PropertyRef Name="ID" />
@@ -81,6 +107,66 @@
       </Principal>
       <Dependent Role="CTHD_TrangSuc">
         <PropertyRef Name="IDTrangSuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HoaDon_NhanVien">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="NguoiLap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuDatHang_NhanVien">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="PhieuDatHang" Type="Self.PhieuDatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhieuDatHang">
+        <PropertyRef Name="NguoiLap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuDatHang_TrangSuc">
+    <End Role="TrangSuc" Type="Self.TrangSuc" Multiplicity="0..1" />
+    <End Role="PhieuDatHang" Type="Self.PhieuDatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrangSuc">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhieuDatHang">
+        <PropertyRef Name="MaMatHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuXuatHang_NhanVien">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="PhieuXuatHang" Type="Self.PhieuXuatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhieuXuatHang">
+        <PropertyRef Name="NguoiXuat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuXuatHang_TrangSuc">
+    <End Role="TrangSuc" Type="Self.TrangSuc" Multiplicity="0..1" />
+    <End Role="PhieuXuatHang" Type="Self.PhieuXuatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrangSuc">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhieuXuatHang">
+        <PropertyRef Name="MaMatHang" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -159,6 +245,8 @@
     <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoaiTrangSuc" EntityType="Self.LoaiTrangSuc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhieuDatHang" EntityType="Self.PhieuDatHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhieuXuatHang" EntityType="Self.PhieuXuatHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TrangSuc" EntityType="Self.TrangSuc" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_CTHD_HOADON" Association="Self.FK_CTHD_HOADON">
       <End Role="HoaDon" EntitySet="HoaDon" />
@@ -167,6 +255,26 @@
     <AssociationSet Name="FK_CTHD_TRANGSUC" Association="Self.FK_CTHD_TRANGSUC">
       <End Role="TrangSuc" EntitySet="TrangSuc" />
       <End Role="CTHD_TrangSuc" EntitySet="CTHD_TrangSuc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HoaDon_NhanVien" Association="Self.FK_HoaDon_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuDatHang_NhanVien" Association="Self.FK_PhieuDatHang_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="PhieuDatHang" EntitySet="PhieuDatHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuDatHang_TrangSuc" Association="Self.FK_PhieuDatHang_TrangSuc">
+      <End Role="TrangSuc" EntitySet="TrangSuc" />
+      <End Role="PhieuDatHang" EntitySet="PhieuDatHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuXuatHang_NhanVien" Association="Self.FK_PhieuXuatHang_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="PhieuXuatHang" EntitySet="PhieuXuatHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuXuatHang_TrangSuc" Association="Self.FK_PhieuXuatHang_TrangSuc">
+      <End Role="TrangSuc" EntitySet="TrangSuc" />
+      <End Role="PhieuXuatHang" EntitySet="PhieuXuatHang" />
     </AssociationSet>
     <AssociationSet Name="FK_TRANGSUC_LOAITRANGSUC" Association="Self.FK_TRANGSUC_LOAITRANGSUC">
       <End Role="LoaiTrangSuc" EntitySet="LoaiTrangSuc" />

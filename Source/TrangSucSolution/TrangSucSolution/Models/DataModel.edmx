@@ -60,6 +60,19 @@
           <Property Name="NgayLap" Type="date" />
           <Property Name="NguoiLap" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="PhieuXuatHang">
+          <Key>
+            <PropertyRef Name="SoPhieu" />
+          </Key>
+          <Property Name="SoPhieu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaMatHang" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenMatHang" Type="nvarchar" MaxLength="200" />
+          <Property Name="SoLuong" Type="int" />
+          <Property Name="DonGia" Type="int" />
+          <Property Name="TongGiaTri" Type="int" />
+          <Property Name="NgayXuat" Type="date" />
+          <Property Name="NguoiXuat" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="TrangSuc">
           <Key>
             <PropertyRef Name="ID" />
@@ -102,6 +115,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HoaDon_NhanVien">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="NguoiLap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PhieuDatHang_NhanVien">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="PhieuDatHang" Type="Self.PhieuDatHang" Multiplicity="*" />
@@ -122,6 +147,30 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="PhieuDatHang">
+              <PropertyRef Name="MaMatHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhieuXuatHang_NhanVien">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="PhieuXuatHang" Type="Self.PhieuXuatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PhieuXuatHang">
+              <PropertyRef Name="NguoiXuat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhieuXuatHang_TrangSuc">
+          <End Role="TrangSuc" Type="Self.TrangSuc" Multiplicity="0..1" />
+          <End Role="PhieuXuatHang" Type="Self.PhieuXuatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrangSuc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PhieuXuatHang">
               <PropertyRef Name="MaMatHang" />
             </Dependent>
           </ReferentialConstraint>
@@ -202,6 +251,7 @@
           <EntitySet Name="LoaiTrangSuc" EntityType="Self.LoaiTrangSuc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhieuDatHang" EntityType="Self.PhieuDatHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhieuXuatHang" EntityType="Self.PhieuXuatHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrangSuc" EntityType="Self.TrangSuc" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CTHD_HOADON" Association="Self.FK_CTHD_HOADON">
             <End Role="HoaDon" EntitySet="HoaDon" />
@@ -211,6 +261,10 @@
             <End Role="TrangSuc" EntitySet="TrangSuc" />
             <End Role="CTHD_TrangSuc" EntitySet="CTHD_TrangSuc" />
           </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_NhanVien" Association="Self.FK_HoaDon_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
           <AssociationSet Name="FK_PhieuDatHang_NhanVien" Association="Self.FK_PhieuDatHang_NhanVien">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="PhieuDatHang" EntitySet="PhieuDatHang" />
@@ -218,6 +272,14 @@
           <AssociationSet Name="FK_PhieuDatHang_TrangSuc" Association="Self.FK_PhieuDatHang_TrangSuc">
             <End Role="TrangSuc" EntitySet="TrangSuc" />
             <End Role="PhieuDatHang" EntitySet="PhieuDatHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuXuatHang_NhanVien" Association="Self.FK_PhieuXuatHang_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="PhieuXuatHang" EntitySet="PhieuXuatHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuXuatHang_TrangSuc" Association="Self.FK_PhieuXuatHang_TrangSuc">
+            <End Role="TrangSuc" EntitySet="TrangSuc" />
+            <End Role="PhieuXuatHang" EntitySet="PhieuXuatHang" />
           </AssociationSet>
           <AssociationSet Name="FK_TRANGSUC_LOAITRANGSUC" Association="Self.FK_TRANGSUC_LOAITRANGSUC">
             <End Role="LoaiTrangSuc" EntitySet="LoaiTrangSuc" />
@@ -254,6 +316,7 @@
           <Property Name="DiaChiKhachHang" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TinhTrang" Type="Int32" />
           <NavigationProperty Name="CTHD_TrangSuc" Relationship="Self.FK_CTHD_HOADON" FromRole="HoaDon" ToRole="CTHD_TrangSuc" />
+          <NavigationProperty Name="NhanVien" Relationship="TRANGSUCModel.FK_HoaDon_NhanVien" FromRole="HoaDon" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="LoaiTrangSuc">
           <Key>
@@ -274,6 +337,8 @@
           <Property Name="CMND" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="NgaySinh" Type="DateTime" Precision="0" />
           <NavigationProperty Name="PhieuDatHangs" Relationship="TRANGSUCModel.FK_PhieuDatHang_NhanVien" FromRole="NhanVien" ToRole="PhieuDatHang" />
+          <NavigationProperty Name="PhieuXuatHangs" Relationship="TRANGSUCModel.FK_PhieuXuatHang_NhanVien" FromRole="NhanVien" ToRole="PhieuXuatHang" />
+          <NavigationProperty Name="HoaDons" Relationship="TRANGSUCModel.FK_HoaDon_NhanVien" FromRole="NhanVien" ToRole="HoaDon" />
         </EntityType>
         <EntityType Name="TrangSuc">
           <Key>
@@ -291,6 +356,7 @@
           <NavigationProperty Name="LoaiTrangSuc1" Relationship="Self.FK_TRANGSUC_LOAITRANGSUC" FromRole="TrangSuc" ToRole="LoaiTrangSuc" />
           <Property Name="SoLuong" Type="Int32" />
           <NavigationProperty Name="PhieuDatHangs" Relationship="TRANGSUCModel.FK_PhieuDatHang_TrangSuc" FromRole="TrangSuc" ToRole="PhieuDatHang" />
+          <NavigationProperty Name="PhieuXuatHangs" Relationship="TRANGSUCModel.FK_PhieuXuatHang_TrangSuc" FromRole="TrangSuc" ToRole="PhieuXuatHang" />
         </EntityType>
         <Association Name="FK_CTHD_HOADON">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1">
@@ -417,6 +483,19 @@
             <End Role="TrangSuc" EntitySet="TrangSucs" />
             <End Role="PhieuDatHang" EntitySet="PhieuDatHangs" />
           </AssociationSet>
+          <EntitySet Name="PhieuXuatHangs" EntityType="TRANGSUCModel.PhieuXuatHang" />
+          <AssociationSet Name="FK_PhieuXuatHang_NhanVien" Association="TRANGSUCModel.FK_PhieuXuatHang_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="PhieuXuatHang" EntitySet="PhieuXuatHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhieuXuatHang_TrangSuc" Association="TRANGSUCModel.FK_PhieuXuatHang_TrangSuc">
+            <End Role="TrangSuc" EntitySet="TrangSucs" />
+            <End Role="PhieuXuatHang" EntitySet="PhieuXuatHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_NhanVien" Association="TRANGSUCModel.FK_HoaDon_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="PhieuDatHang">
           <Key>
@@ -454,6 +533,57 @@
             </Principal>
             <Dependent Role="PhieuDatHang">
               <PropertyRef Name="MaMatHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PhieuXuatHang">
+          <Key>
+            <PropertyRef Name="SoPhieu" />
+          </Key>
+          <Property Name="SoPhieu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaMatHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenMatHang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="DonGia" Type="Int32" />
+          <Property Name="TongGiaTri" Type="Int32" />
+          <Property Name="NgayXuat" Type="DateTime" Precision="0" />
+          <Property Name="NguoiXuat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NhanVien" Relationship="TRANGSUCModel.FK_PhieuXuatHang_NhanVien" FromRole="PhieuXuatHang" ToRole="NhanVien" />
+          <NavigationProperty Name="TrangSuc" Relationship="TRANGSUCModel.FK_PhieuXuatHang_TrangSuc" FromRole="PhieuXuatHang" ToRole="TrangSuc" />
+        </EntityType>
+        <Association Name="FK_PhieuXuatHang_NhanVien">
+          <End Type="TRANGSUCModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+          <End Type="TRANGSUCModel.PhieuXuatHang" Role="PhieuXuatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PhieuXuatHang">
+              <PropertyRef Name="NguoiXuat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhieuXuatHang_TrangSuc">
+          <End Type="TRANGSUCModel.TrangSuc" Role="TrangSuc" Multiplicity="0..1" />
+          <End Type="TRANGSUCModel.PhieuXuatHang" Role="PhieuXuatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrangSuc">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PhieuXuatHang">
+              <PropertyRef Name="MaMatHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoaDon_NhanVien">
+          <End Type="TRANGSUCModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+          <End Type="TRANGSUCModel.HoaDon" Role="HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="NguoiLap" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -538,6 +668,20 @@
               <MappingFragment StoreEntitySet="PhieuDatHang">
                 <ScalarProperty Name="NguoiLap" ColumnName="NguoiLap" />
                 <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+                <ScalarProperty Name="TongGiaTri" ColumnName="TongGiaTri" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="TenMatHang" ColumnName="TenMatHang" />
+                <ScalarProperty Name="MaMatHang" ColumnName="MaMatHang" />
+                <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhieuXuatHangs">
+            <EntityTypeMapping TypeName="TRANGSUCModel.PhieuXuatHang">
+              <MappingFragment StoreEntitySet="PhieuXuatHang">
+                <ScalarProperty Name="NguoiXuat" ColumnName="NguoiXuat" />
+                <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
                 <ScalarProperty Name="TongGiaTri" ColumnName="TongGiaTri" />
                 <ScalarProperty Name="DonGia" ColumnName="DonGia" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />

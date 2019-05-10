@@ -32,5 +32,6 @@ namespace TrangSucSolution.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD_TrangSuc> CTHD_TrangSuc { get; set; }
+        public virtual NhanVien NhanVien { get; set; }
     }
 }

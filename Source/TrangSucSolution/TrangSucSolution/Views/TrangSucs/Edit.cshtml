@@ -7,7 +7,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "TrangSucs", FormMethod.Post, new { enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     
@@ -76,8 +76,9 @@
     <div class="form-group">
         @Html.LabelFor(model => model.HinhAnh, "Hình ảnh", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <img src="../../Image/@Html.DisplayFor(model => model.HinhAnh)" />
-            <input type="file" name="HinhAnh" required />
+            <img id="blah" src="../../Image/@Html.DisplayFor(model => model.HinhAnh)" />
+            @Html.TextBox("file", "", new { type = "file", @onchange = "readURL(this);" })
+            <!-- <input type='file' name="HinhAnh" required src="../../Image/@Html.DisplayFor(model => model.HinhAnh)" onchange="readURL(this);" /> -->
         </div>
     </div>
 
@@ -95,4 +96,18 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 }

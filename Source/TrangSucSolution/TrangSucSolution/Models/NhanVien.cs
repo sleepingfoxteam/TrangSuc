@@ -18,6 +18,8 @@ namespace TrangSucSolution.Models
         public NhanVien()
         {
             this.PhieuDatHangs = new HashSet<PhieuDatHang>();
+            this.PhieuXuatHangs = new HashSet<PhieuXuatHang>();
+            this.HoaDons = new HashSet<HoaDon>();
         }
     
         public string ID { get; set; }
@@ -29,5 +31,9 @@ namespace TrangSucSolution.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuDatHang> PhieuDatHangs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhieuXuatHang> PhieuXuatHangs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HoaDon> HoaDons { get; set; }
     }
 }

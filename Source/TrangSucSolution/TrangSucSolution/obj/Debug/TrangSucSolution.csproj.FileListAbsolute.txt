@@ -81,4 +81,3 @@ E:\PTTK_HTTT\TrangSuc\Source\TrangSucSolution\TrangSucSolution\bin\EntityFramewo
 E:\PTTK_HTTT\TrangSuc\Source\TrangSucSolution\TrangSucSolution\bin\EntityFramework.SqlServer.dll
 E:\PTTK_HTTT\TrangSuc\Source\TrangSucSolution\TrangSucSolution\bin\EntityFramework.xml
 E:\PTTK_HTTT\TrangSuc\Source\TrangSucSolution\TrangSucSolution\bin\EntityFramework.SqlServer.xml
-E:\PTTK_HTTT\TrangSuc\Source\TrangSucSolution\TrangSucSolution\obj\Debug\TrangSucSolution.csprojAssemblyReference.cache

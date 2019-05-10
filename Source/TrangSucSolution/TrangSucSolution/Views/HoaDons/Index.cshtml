@@ -1,0 +1,94 @@
+﻿@model IEnumerable<TrangSucSolution.Models.HoaDon>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Hóa đơn</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@{ 
+    List<SelectListItem> items = new List<SelectListItem>();
+    items.Add(new SelectListItem { Text = "Chờ thanh toán", Value = "0" });
+    items.Add(new SelectListItem { Text = "Đã thanh toán", Value = "1" });
+    items.Add(new SelectListItem { Text = "Chờ xác nhận", Value = "2" });
+}
+
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Ngày lập
+        </th>
+        <th>
+            Ngày thanh toán
+        </th>
+        <th>
+            Tổng tiền
+        </th>
+        <th>
+            Họ tên khách hàng
+        </th>
+        <th>
+            SĐT khách hàng
+        </th>
+        <th>
+            Địa chỉ khách hàng
+        </th>
+        <th>
+            Tình trạng
+        </th>
+        <th>
+            Người lập
+        </th>
+        <th></th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayLap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayThanhToan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongTien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTenKhachHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SdtKhachHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChiKhachHang)
+        </td>
+        <td>
+            @foreach (var tinhTrang in items)
+            {
+                if (item.TinhTrang.ToString() == tinhTrang.Value)
+                {
+                    @Html.DisplayFor(modelItem => tinhTrang.Text);
+                }
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhanVien.HoTen)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+}
+
+</table>
