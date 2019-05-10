@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <!--<title>@ViewBag.Title - Cửa hàng Hiệp Hưng</title>-->
+    <title>CỬA HÀNG HIỆP HƯNG</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/master.css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -16,13 +18,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("CỬA HÀNG", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("HOME", "Index", "Home")</li>
+                    <!--<li>@Html.ActionLink("HOME", "Index", "Home")</li>-->
                     <li>@Html.ActionLink("NHÂN VIÊN", "Index", "NhanViens")</li>
-                    <li>@Html.ActionLink("TRANG SỨC", "Index", "TrangSucs")</li>
+                    <li>@Html.ActionLink("KHO", "Index", "TrangSucs")</li>
+                    <li>@Html.ActionLink("BÁN HÀNG", "Index", "HoaDons")</li>
                 </ul>
             </div>
         </div>
@@ -31,7 +34,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - CỬA HÀNG TRANG SỨC HIỆP HƯNG</p>
         </footer>
     </div>
 

@@ -71,5 +71,33 @@
     <FunctionImportMapping FunctionImportName="SP_UPDATE_HOADON" FunctionName="TRANGSUCModel.Store.SP_UPDATE_HOADON" />
     <FunctionImportMapping FunctionImportName="SP_UPDATE_NHANVIEN" FunctionName="TRANGSUCModel.Store.SP_UPDATE_NHANVIEN" />
     <FunctionImportMapping FunctionImportName="SP_UPDATE_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_UPDATE_TRANGSUC" />
+    <EntitySetMapping Name="PhieuDatHangs">
+      <EntityTypeMapping TypeName="TRANGSUCModel.PhieuDatHang">
+        <MappingFragment StoreEntitySet="PhieuDatHang">
+          <ScalarProperty Name="NguoiLap" ColumnName="NguoiLap" />
+          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+          <ScalarProperty Name="TongGiaTri" ColumnName="TongGiaTri" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="TenMatHang" ColumnName="TenMatHang" />
+          <ScalarProperty Name="MaMatHang" ColumnName="MaMatHang" />
+          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhieuXuatHangs">
+      <EntityTypeMapping TypeName="TRANGSUCModel.PhieuXuatHang">
+        <MappingFragment StoreEntitySet="PhieuXuatHang">
+          <ScalarProperty Name="NguoiXuat" ColumnName="NguoiXuat" />
+          <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
+          <ScalarProperty Name="TongGiaTri" ColumnName="TongGiaTri" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="TenMatHang" ColumnName="TenMatHang" />
+          <ScalarProperty Name="MaMatHang" ColumnName="MaMatHang" />
+          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

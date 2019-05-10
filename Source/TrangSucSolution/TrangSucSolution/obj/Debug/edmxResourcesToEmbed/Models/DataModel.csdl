@@ -26,6 +26,7 @@
     <Property Name="DiaChiKhachHang" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="TinhTrang" Type="Int32" />
     <NavigationProperty Name="CTHD_TrangSuc" Relationship="Self.FK_CTHD_HOADON" FromRole="HoaDon" ToRole="CTHD_TrangSuc" />
+    <NavigationProperty Name="NhanVien" Relationship="TRANGSUCModel.FK_HoaDon_NhanVien" FromRole="HoaDon" ToRole="NhanVien" />
   </EntityType>
   <EntityType Name="LoaiTrangSuc">
     <Key>
@@ -45,6 +46,9 @@
     <Property Name="Sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="CMND" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="PhieuDatHangs" Relationship="TRANGSUCModel.FK_PhieuDatHang_NhanVien" FromRole="NhanVien" ToRole="PhieuDatHang" />
+    <NavigationProperty Name="PhieuXuatHangs" Relationship="TRANGSUCModel.FK_PhieuXuatHang_NhanVien" FromRole="NhanVien" ToRole="PhieuXuatHang" />
+    <NavigationProperty Name="HoaDons" Relationship="TRANGSUCModel.FK_HoaDon_NhanVien" FromRole="NhanVien" ToRole="HoaDon" />
   </EntityType>
   <EntityType Name="TrangSuc">
     <Key>
@@ -61,6 +65,8 @@
     <NavigationProperty Name="CTHD_TrangSuc" Relationship="Self.FK_CTHD_TRANGSUC" FromRole="TrangSuc" ToRole="CTHD_TrangSuc" />
     <NavigationProperty Name="LoaiTrangSuc1" Relationship="Self.FK_TRANGSUC_LOAITRANGSUC" FromRole="TrangSuc" ToRole="LoaiTrangSuc" />
     <Property Name="SoLuong" Type="Int32" />
+    <NavigationProperty Name="PhieuDatHangs" Relationship="TRANGSUCModel.FK_PhieuDatHang_TrangSuc" FromRole="TrangSuc" ToRole="PhieuDatHang" />
+    <NavigationProperty Name="PhieuXuatHangs" Relationship="TRANGSUCModel.FK_PhieuXuatHang_TrangSuc" FromRole="TrangSuc" ToRole="PhieuXuatHang" />
   </EntityType>
   <Association Name="FK_CTHD_HOADON">
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1">
@@ -178,5 +184,117 @@
       <Parameter Name="GiaHat" Mode="In" Type="Int32" />
       <Parameter Name="HinhAnh" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="PhieuDatHangs" EntityType="TRANGSUCModel.PhieuDatHang" />
+    <AssociationSet Name="FK_PhieuDatHang_NhanVien" Association="TRANGSUCModel.FK_PhieuDatHang_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="PhieuDatHang" EntitySet="PhieuDatHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuDatHang_TrangSuc" Association="TRANGSUCModel.FK_PhieuDatHang_TrangSuc">
+      <End Role="TrangSuc" EntitySet="TrangSucs" />
+      <End Role="PhieuDatHang" EntitySet="PhieuDatHangs" />
+    </AssociationSet>
+    <EntitySet Name="PhieuXuatHangs" EntityType="TRANGSUCModel.PhieuXuatHang" />
+    <AssociationSet Name="FK_PhieuXuatHang_NhanVien" Association="TRANGSUCModel.FK_PhieuXuatHang_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="PhieuXuatHang" EntitySet="PhieuXuatHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuXuatHang_TrangSuc" Association="TRANGSUCModel.FK_PhieuXuatHang_TrangSuc">
+      <End Role="TrangSuc" EntitySet="TrangSucs" />
+      <End Role="PhieuXuatHang" EntitySet="PhieuXuatHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HoaDon_NhanVien" Association="TRANGSUCModel.FK_HoaDon_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="PhieuDatHang">
+    <Key>
+      <PropertyRef Name="SoPhieu" />
+    </Key>
+    <Property Name="SoPhieu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaMatHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TenMatHang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="DonGia" Type="Int32" />
+    <Property Name="TongGiaTri" Type="Int32" />
+    <Property Name="NgayLap" Type="DateTime" Precision="0" />
+    <Property Name="NguoiLap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NhanVien" Relationship="TRANGSUCModel.FK_PhieuDatHang_NhanVien" FromRole="PhieuDatHang" ToRole="NhanVien" />
+    <NavigationProperty Name="TrangSuc" Relationship="TRANGSUCModel.FK_PhieuDatHang_TrangSuc" FromRole="PhieuDatHang" ToRole="TrangSuc" />
+  </EntityType>
+  <Association Name="FK_PhieuDatHang_NhanVien">
+    <End Type="TRANGSUCModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+    <End Type="TRANGSUCModel.PhieuDatHang" Role="PhieuDatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhieuDatHang">
+        <PropertyRef Name="NguoiLap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuDatHang_TrangSuc">
+    <End Type="TRANGSUCModel.TrangSuc" Role="TrangSuc" Multiplicity="0..1" />
+    <End Type="TRANGSUCModel.PhieuDatHang" Role="PhieuDatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrangSuc">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhieuDatHang">
+        <PropertyRef Name="MaMatHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PhieuXuatHang">
+    <Key>
+      <PropertyRef Name="SoPhieu" />
+    </Key>
+    <Property Name="SoPhieu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaMatHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TenMatHang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="DonGia" Type="Int32" />
+    <Property Name="TongGiaTri" Type="Int32" />
+    <Property Name="NgayXuat" Type="DateTime" Precision="0" />
+    <Property Name="NguoiXuat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NhanVien" Relationship="TRANGSUCModel.FK_PhieuXuatHang_NhanVien" FromRole="PhieuXuatHang" ToRole="NhanVien" />
+    <NavigationProperty Name="TrangSuc" Relationship="TRANGSUCModel.FK_PhieuXuatHang_TrangSuc" FromRole="PhieuXuatHang" ToRole="TrangSuc" />
+  </EntityType>
+  <Association Name="FK_PhieuXuatHang_NhanVien">
+    <End Type="TRANGSUCModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+    <End Type="TRANGSUCModel.PhieuXuatHang" Role="PhieuXuatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhieuXuatHang">
+        <PropertyRef Name="NguoiXuat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuXuatHang_TrangSuc">
+    <End Type="TRANGSUCModel.TrangSuc" Role="TrangSuc" Multiplicity="0..1" />
+    <End Type="TRANGSUCModel.PhieuXuatHang" Role="PhieuXuatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrangSuc">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhieuXuatHang">
+        <PropertyRef Name="MaMatHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HoaDon_NhanVien">
+    <End Type="TRANGSUCModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+    <End Type="TRANGSUCModel.HoaDon" Role="HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="NguoiLap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

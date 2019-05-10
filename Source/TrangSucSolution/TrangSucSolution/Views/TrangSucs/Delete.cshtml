@@ -12,7 +12,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TenTrangSuc)
+            Tên trang sức
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GiaCong)
+            Gia công
         </dt>
 
         <dd>
@@ -28,7 +28,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.KhoiLuongTinh)
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            Khối lượng tịnh
         </dt>
 
         <dd>
@@ -36,7 +44,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SoHat)
+            Số hạt
         </dt>
 
         <dd>
@@ -44,7 +52,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GiaHat)
+            Giá hạt
         </dt>
 
         <dd>
@@ -52,19 +60,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LoaiTrangSuc1.TenLoai)
+            Loại trang sức
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.LoaiTrangSuc1.TenLoai)
+        </dd>
+
+        <dt>
+            Hình ảnh
+        </dt>
+
+        <dd>
+            <img src="../../Image/@Html.DisplayFor(model => model.HinhAnh)" />
         </dd>
 
     </dl>
