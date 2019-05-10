@@ -139,6 +139,7 @@
     <Compile Include="Controllers\NhanViensController.cs" />
     <Compile Include="Controllers\PhieuDatHangsController.cs" />
     <Compile Include="Controllers\PhieuXuatHangsController.cs" />
+    <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Controllers\TrangSucsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -186,7 +187,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\master.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -304,6 +304,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
+    <Content Include="Style\master.css" />
+    <Content Include="Style\owl.carousel.min.css" />
+    <Content Include="Style\owl.theme.default.min.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -341,6 +345,8 @@
     <Content Include="Views\HoaDons\Details.cshtml" />
     <Content Include="Views\HoaDons\Edit.cshtml" />
     <Content Include="Views\HoaDons\Index.cshtml" />
+    <Content Include="Views\TrangChu\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutTrangChu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

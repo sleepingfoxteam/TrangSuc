@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<title>@ViewBag.Title - Cửa hàng Hiệp Hưng</title>-->
+    <title>CỬA HÀNG HIỆP HƯNG</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="@Url.Content("~/Style/master.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Style/owl.carousel.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Style/owl.theme.default.min.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="row">
+                <div class="col-lg-10 col-md-10">
+                    <p>&copy; @DateTime.Now.Year - CỬA HÀNG TRANG SỨC HIỆP HƯNG</p>
+                    <p>Giấy chứng nhận đăng ký kinh doanh: abcxyz</p>
+                </div>
+                <div class="cod-lg-2 col-md-2">
+                    <img src="#"/>
+                </div>
+            </div>
+            
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
