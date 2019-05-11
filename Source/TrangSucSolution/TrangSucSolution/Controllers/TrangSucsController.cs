@@ -53,15 +53,45 @@ namespace TrangSucSolution.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,TenTrangSuc,LoaiTrangSuc,GiaCong,KhoiLuongTinh,SoHat,GiaHat,HinhAnh,SoLuong")] TrangSuc trangSuc, HttpPostedFileBase file)
         {
-            if (file.ContentLength > 0)
+            if (file != null)
             {
-                filename = Path.GetFileName(file.FileName);
-                string filepath = Path.Combine(Server.MapPath("~/Image"), filename);
-                file.SaveAs(filepath);
+                if (file.ContentLength > 0)
+                {
+                    filename = Path.GetFileName(file.FileName);
+                    string filepath = Path.Combine(Server.MapPath("~/Image"), filename);
+                    file.SaveAs(filepath);
+                }
             }
             if (ModelState.IsValid)
             {
-                trangSuc.HinhAnh = filename;
+                if(trangSuc.SoHat == null)
+                {
+                    trangSuc.SoHat = 0;
+                }
+                if (trangSuc.GiaHat == null)
+                {
+                    trangSuc.GiaHat = 0;
+                }
+                if (trangSuc.SoLuong == null)
+                {
+                    trangSuc.SoLuong = 0;
+                }
+                if (trangSuc.GiaCong == null)
+                {
+                    trangSuc.GiaCong = 0;
+                }
+                if (trangSuc.KhoiLuongTinh == null)
+                {
+                    trangSuc.KhoiLuongTinh = 0;
+                }
+                if (file != null)
+                {
+                    trangSuc.HinhAnh = filename;
+                }
+                else
+                {
+                    trangSuc.HinhAnh = hinhanh;
+                }
                 db.TrangSucs.Add(trangSuc);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -28,6 +28,7 @@ namespace TrangSucSolution.Models
         public string Sdt { get; set; }
         public string CMND { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
+        public string MatKhau { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
@@ -35,5 +36,6 @@ namespace TrangSucSolution.Models
         public virtual ICollection<PhieuDatHang> PhieuDatHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuXuatHang> PhieuXuatHangs { get; set; }
+        public string LoginErroMessage { get; internal set; }
     }
 }
