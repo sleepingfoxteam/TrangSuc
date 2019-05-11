@@ -15,6 +15,7 @@ namespace TrangSucSolution.Controllers
     {
         private TRANGSUCEntities db = new TRANGSUCEntities();
         public string filename;
+        public static string hinhanh;
 
         // GET: TrangSucs
         public ActionResult Index()
@@ -50,7 +51,7 @@ namespace TrangSucSolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,TenTrangSuc,LoaiTrangSuc,GiaCong,KhoiLuongTinh,SoHat,GiaHat,HinhAnh")] TrangSuc trangSuc, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "ID,TenTrangSuc,LoaiTrangSuc,GiaCong,KhoiLuongTinh,SoHat,GiaHat,HinhAnh,SoLuong")] TrangSuc trangSuc, HttpPostedFileBase file)
         {
             if (file.ContentLength > 0)
             {
@@ -78,6 +79,7 @@ namespace TrangSucSolution.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             TrangSuc trangSuc = db.TrangSucs.Find(id);
+            hinhanh = trangSuc.HinhAnh;
             if (trangSuc == null)
             {
                 return HttpNotFound();
@@ -93,18 +95,29 @@ namespace TrangSucSolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,TenTrangSuc,LoaiTrangSuc,GiaCong,KhoiLuongTinh,SoHat,GiaHat,HinhAnh")] TrangSuc trangSuc, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "ID,TenTrangSuc,LoaiTrangSuc,GiaCong,SoLuong,KhoiLuongTinh,SoHat,GiaHat,HinhAnh")] TrangSuc trangSuc, HttpPostedFileBase file)
         {
-            
-            if (file.ContentLength > 0)
+            if (file != null)
             {
-                filename = Path.GetFileName(file.FileName);
-                string filepath = Path.Combine(Server.MapPath("~/Image"), filename);
-                file.SaveAs(filepath);
+                if (file.ContentLength > 0)
+                {
+                    filename = Path.GetFileName(file.FileName);
+                    string filepath = Path.Combine(Server.MapPath("~/Image"), filename);
+                    file.SaveAs(filepath);
+                }
             }
+            
             if (ModelState.IsValid)
             {
-                trangSuc.HinhAnh = filename;
+                if (file != null)
+                {
+                    trangSuc.HinhAnh = filename;
+                }
+                else
+                {
+                    trangSuc.HinhAnh = hinhanh;
+                }
+                
                 db.Entry(trangSuc).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
