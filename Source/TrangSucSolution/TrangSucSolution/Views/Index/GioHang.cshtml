@@ -1,30 +1,66 @@
-﻿@model IEnumerable<TrangSucSolution.Models.TrangSuc>
+﻿@model IEnumerable<TrangSucSolution.Models.GioHangItem>
 
 @{
     ViewBag.Title = "GioHang";
     Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
 }
 
+@{ 
+    int giathitruong = ViewBag.giathitruong;
+    int tongtien = 0;
+}
 <h2>GioHang</h2>
 <div class="container row">
-    <div class="col-md-7">
-        <h3>Thong tin nguoi mua</h3>
+    <div class="col-lg-6">
+        <h3 class="mb-3">Thong tin nguoi mua</h3>
         <form id="thongtinkhachhang">
-            <div class="form-check form-check-inline">
-                <input id="sex-nam" class="form-check-input" value="nam" type="radio" checked />
-                <label for="sex-nam" class="form-check-label">Nam</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input id="sex-nu" class="form-check-input" value="nu" type="radio" />
-                <label for="sex-nu" class="form-check-label">Nu</label>
+            <div class="form-group">
+                <label for="hoten">Ho Ten</label>
+                <input id="hoten" name="hoten" class="form-control" type="text" placeholder="Ho Ten" value="Hung" />
             </div>
             <div class="form-group">
-                <label>Ho Ten</label>
-                <input class="form-control" type="text" placeholder="Ho Ten"/>
+                <label for="sodienthoai">So Dien Thoai</label>
+                <input id="sodienthoai" name="sodienthoai" class="form-control" type="text" placeholder="So Dien Thoai" value="01684875828"/>
             </div>
+            <div class="form-group">
+                <label for="diachi">Ho Ten</label>
+                <input id="diachi" name="diachi" class="form-control" type="text" placeholder="Dia Chi" value="Cai Tau Ha"/>
+            </div>
+            <span class="text-bold">Hình thức thanh toán</span>
+            <p>Thanh toán tiền mặt khi nhân hàng (COD).<br />
+               Chúng tôi cam đoan về chất lượng của sản phẩm. Mong quý khách kiểm tra thật kỹ trước khi thanh toán,
+                hàng sẽ không được hoàn trả lại sau khi thanh toán.
+            </p>
         </form>
     </div>
-    <div class="col-md-5 bg-info">holle</div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-5">
+        <h3 class="mb-3">Trang Suc Trong Gio Hang</h3>
+        <ul class="list-giohang" id="list-giohang">
+            @{
+                foreach (var item in Model)
+                {
+                    int giathanh =(int) (giathitruong * item.Item.KhoiLuongTinh/ 10 + item.Item.GiaCong + item.Item.SoHat * item.Item.GiaHat);
+                    <li class="item">
+                        <div class="item-img">
+                            <img src="../../Image/@item.Item.HinhAnh" class="mr-3" alt="@item.Item.TenTrangSuc">
+                        </div>
+                        <div class="item-info">
+                            <h5 class="mt-0 mb-3 text-bold tentrangsuc">@item.Item.TenTrangSuc</h5>
+                            <span class="id disabled hidden invisible">@item.Item.ID</span>
+                            So Luong: <span class="soluong">@item.Soluong</span><br />
+                            Khoi Luong Tinh (phan vang): <span class="khoiluongtinh">@item.Item.KhoiLuongTinh</span><br />
+                            Gia Thanh: <span class="giathanh">@giathanh.ToString("#,##0")</span>
+                        </div>
+                    </li>
+                    tongtien += giathanh * item.Soluong;
+                }
+                <hr />
+            }
+        </ul>
+        <h3 id="tonggiatri" class="my-3">Tong Gia tri: <span class="tonggiatri-value">@tongtien.ToString("#,##0")</span></h3>
+        <button class="btn btn-primary mr-5 mt-5" id="btn-dathang" style="float:right;">Dat Hang</button>
+    </div>
 </div>
 
 
