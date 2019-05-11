@@ -172,8 +172,8 @@ namespace TrangSucSolution.Controllers
                 foreach(var item in PhieuDatHangsController.list_trangsuc)
                 {
                     db.SaveChanges();
-                    db.SP_INSERT_PDH_TRANGSUC(PhieuDatHangsController.idphieu, item["mats"], item["tents"]
-                        , Int32.Parse(item["soluong"]), Int32.Parse(item["gia"]));
+                    db.SP_INSERT_PDH_TRANGSUC(PhieuDatHangsController.idphieu, item["mats"],
+                        item["tents"], Int32.Parse(item["soluong"]), Int32.Parse(item["giathanh"]));
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");

@@ -23,7 +23,7 @@ function InitialHoanThanhThem() {
                 mats,
                 tents,
                 soluong,
-                gia
+                giathanh: gia
             }
             trangsucs.push(item_object);
         });

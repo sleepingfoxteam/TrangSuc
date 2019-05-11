@@ -364,6 +364,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Index\GioHang.cshtml" />
     <Content Include="Views\PhieuDatHangs\ThemSanPhamVaoPhieu.cshtml" />
+    <Content Include="Views\PhieuXuatHangs\ThemSanPhamVaoPhieu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

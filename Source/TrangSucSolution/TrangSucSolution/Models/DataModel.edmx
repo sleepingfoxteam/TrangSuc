@@ -192,7 +192,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PXH_TrangSuc_PhieuXuatHang">
+        <Association Name="FK_PXH_TrangSuc_PhieuXuatHang1">
           <End Role="PhieuXuatHang" Type="Self.PhieuXuatHang" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -347,7 +347,7 @@
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="PhieuXuatHang" EntitySet="PhieuXuatHang" />
           </AssociationSet>
-          <AssociationSet Name="FK_PXH_TrangSuc_PhieuXuatHang" Association="Self.FK_PXH_TrangSuc_PhieuXuatHang">
+          <AssociationSet Name="FK_PXH_TrangSuc_PhieuXuatHang1" Association="Self.FK_PXH_TrangSuc_PhieuXuatHang1">
             <End Role="PhieuXuatHang" EntitySet="PhieuXuatHang" />
             <End Role="PXH_TrangSuc" EntitySet="PXH_TrangSuc" />
           </AssociationSet>
@@ -449,7 +449,7 @@
           <Property Name="NgayXuat" Type="DateTime" Precision="0" />
           <Property Name="NguoiXuat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="NhanVien" Relationship="Self.FK_PhieuXuatHang_NhanVien" FromRole="PhieuXuatHang" ToRole="NhanVien" />
-          <NavigationProperty Name="PXH_TrangSuc" Relationship="Self.FK_PXH_TrangSuc_PhieuXuatHang" FromRole="PhieuXuatHang" ToRole="PXH_TrangSuc" />
+          <NavigationProperty Name="PXH_TrangSuc" Relationship="Self.FK_PXH_TrangSuc_PhieuXuatHang1" FromRole="PhieuXuatHang" ToRole="PXH_TrangSuc" />
         </EntityType>
         <EntityType Name="PXH_TrangSuc">
           <Key>
@@ -461,7 +461,7 @@
           <Property Name="SoLuong" Type="Int32" />
           <Property Name="TenTrangSuc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="DonGia" Type="Int32" />
-          <NavigationProperty Name="PhieuXuatHang" Relationship="Self.FK_PXH_TrangSuc_PhieuXuatHang" FromRole="PXH_TrangSuc" ToRole="PhieuXuatHang" />
+          <NavigationProperty Name="PhieuXuatHang" Relationship="Self.FK_PXH_TrangSuc_PhieuXuatHang1" FromRole="PXH_TrangSuc" ToRole="PhieuXuatHang" />
           <NavigationProperty Name="TrangSuc" Relationship="Self.FK_PXH_TrangSuc_TrangSuc" FromRole="PXH_TrangSuc" ToRole="TrangSuc" />
         </EntityType>
         <EntityType Name="TrangSuc">
@@ -584,7 +584,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PXH_TrangSuc_PhieuXuatHang">
+        <Association Name="FK_PXH_TrangSuc_PhieuXuatHang1">
           <End Role="PhieuXuatHang" Type="Self.PhieuXuatHang" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -652,7 +652,7 @@
             <End Role="TrangSuc" EntitySet="TrangSucs" />
             <End Role="PDH_TrangSuc" EntitySet="PDH_TrangSuc" />
           </AssociationSet>
-          <AssociationSet Name="FK_PXH_TrangSuc_PhieuXuatHang" Association="Self.FK_PXH_TrangSuc_PhieuXuatHang">
+          <AssociationSet Name="FK_PXH_TrangSuc_PhieuXuatHang1" Association="Self.FK_PXH_TrangSuc_PhieuXuatHang1">
             <End Role="PhieuXuatHang" EntitySet="PhieuXuatHangs" />
             <End Role="PXH_TrangSuc" EntitySet="PXH_TrangSuc" />
           </AssociationSet>

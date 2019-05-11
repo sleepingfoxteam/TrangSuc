@@ -187,7 +187,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PXH_TrangSuc_PhieuXuatHang">
+  <Association Name="FK_PXH_TrangSuc_PhieuXuatHang1">
     <End Role="PhieuXuatHang" Type="Self.PhieuXuatHang" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -342,7 +342,7 @@
       <End Role="NhanVien" EntitySet="NhanVien" />
       <End Role="PhieuXuatHang" EntitySet="PhieuXuatHang" />
     </AssociationSet>
-    <AssociationSet Name="FK_PXH_TrangSuc_PhieuXuatHang" Association="Self.FK_PXH_TrangSuc_PhieuXuatHang">
+    <AssociationSet Name="FK_PXH_TrangSuc_PhieuXuatHang1" Association="Self.FK_PXH_TrangSuc_PhieuXuatHang1">
       <End Role="PhieuXuatHang" EntitySet="PhieuXuatHang" />
       <End Role="PXH_TrangSuc" EntitySet="PXH_TrangSuc" />
     </AssociationSet>
