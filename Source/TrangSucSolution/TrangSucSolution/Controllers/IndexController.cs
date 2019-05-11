@@ -17,7 +17,7 @@ namespace TrangSucSolution.Controllers
 
         static public List<GioHangItem> listgiohang = new List<GioHangItem>();
 
-        static int giathitruong = 2000000;
+        static public int giathitruong = 2000000;
 
         // GET: Index
         public ActionResult Index()

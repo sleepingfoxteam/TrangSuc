@@ -168,6 +168,56 @@ namespace TrangSucSolution.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERT_NHANVIEN", hoTenParameter, diaChiParameter, sdtParameter, cMNDParameter, ngaySinhParameter);
         }
     
+        public virtual int SP_INSERT_PDH_TRANGSUC(string idphieu, string idts, string tents, Nullable<int> soluong, Nullable<int> gia)
+        {
+            var idphieuParameter = idphieu != null ?
+                new ObjectParameter("idphieu", idphieu) :
+                new ObjectParameter("idphieu", typeof(string));
+    
+            var idtsParameter = idts != null ?
+                new ObjectParameter("idts", idts) :
+                new ObjectParameter("idts", typeof(string));
+    
+            var tentsParameter = tents != null ?
+                new ObjectParameter("tents", tents) :
+                new ObjectParameter("tents", typeof(string));
+    
+            var soluongParameter = soluong.HasValue ?
+                new ObjectParameter("soluong", soluong) :
+                new ObjectParameter("soluong", typeof(int));
+    
+            var giaParameter = gia.HasValue ?
+                new ObjectParameter("gia", gia) :
+                new ObjectParameter("gia", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERT_PDH_TRANGSUC", idphieuParameter, idtsParameter, tentsParameter, soluongParameter, giaParameter);
+        }
+    
+        public virtual int SP_INSERT_PXH_TRANGSUC(string idphieu, string idts, string tents, Nullable<int> soluong, Nullable<int> gia)
+        {
+            var idphieuParameter = idphieu != null ?
+                new ObjectParameter("idphieu", idphieu) :
+                new ObjectParameter("idphieu", typeof(string));
+    
+            var idtsParameter = idts != null ?
+                new ObjectParameter("idts", idts) :
+                new ObjectParameter("idts", typeof(string));
+    
+            var tentsParameter = tents != null ?
+                new ObjectParameter("tents", tents) :
+                new ObjectParameter("tents", typeof(string));
+    
+            var soluongParameter = soluong.HasValue ?
+                new ObjectParameter("soluong", soluong) :
+                new ObjectParameter("soluong", typeof(int));
+    
+            var giaParameter = gia.HasValue ?
+                new ObjectParameter("gia", gia) :
+                new ObjectParameter("gia", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERT_PXH_TRANGSUC", idphieuParameter, idtsParameter, tentsParameter, soluongParameter, giaParameter);
+        }
+    
         public virtual int SP_INSERT_TRANGSUC(string tenTrangSuc, string loaiTrangSuc, Nullable<int> giaCong, Nullable<double> khoiLuongTinh, Nullable<int> soHat, Nullable<int> giaHat, string hinhAnh)
         {
             var tenTrangSucParameter = tenTrangSuc != null ?

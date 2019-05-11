@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using TrangSucSolution.Models;
 
 namespace TrangSucSolution.Controllers
@@ -13,6 +14,10 @@ namespace TrangSucSolution.Controllers
     public class PhieuDatHangsController : Controller
     {
         private TRANGSUCEntities db = new TRANGSUCEntities();
+
+        public static dynamic list_trangsuc = null;
+
+        public static string idphieu = "";
 
         // GET: PhieuDatHangs
         public ActionResult Index()
@@ -40,6 +45,13 @@ namespace TrangSucSolution.Controllers
         public ActionResult Create()
         {
             ViewBag.NguoiLap = new SelectList(db.NhanViens, "ID", "HoTen");
+            ViewBag.tongtien = 0;
+            ViewBag.ngaylap = DateTime.Now.Date;
+            int phieu_count = db.PhieuDatHangs.Where(t => t.NgayLap.Value.Year == DateTime.Now.Year &&
+                                                t.NgayLap.Value.Month == DateTime.Now.Month &&
+                                                t.NgayLap.Value.Day == DateTime.Now.Day).Count();
+            string idphieu = "DH" + String.Join("", DateTime.Now.Date.ToShortDateString().Split('/')) + (phieu_count+1).ToString("00.#");
+            ViewBag.idphieu = idphieu;
             return View();
         }
 
@@ -58,7 +70,13 @@ namespace TrangSucSolution.Controllers
             }
 
             ViewBag.NguoiLap = new SelectList(db.NhanViens, "ID", "HoTen", phieuDatHang.NguoiLap);
+
             return View(phieuDatHang);
+        }
+
+        public dynamic addPhieu_TrangSuc()
+        {
+            return -1;
         }
 
         // GET: PhieuDatHangs/Edit/5
@@ -119,6 +137,53 @@ namespace TrangSucSolution.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        
+        public ActionResult ThemSanPhamVaoPhieu()
+        {
+            var trangsuc = db.TrangSucs.Where(t => t.ID != null);
+            ViewBag.giathitruong = IndexController.giathitruong;
+            return View(trangsuc.ToList());
+        } 
+
+        public ActionResult HoanThanhChon(string jsondata)
+        {
+            ViewBag.NguoiLap = new SelectList(db.NhanViens, "ID", "HoTen");
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            dynamic object_ = js.Deserialize<dynamic>(jsondata);
+            PhieuDatHangsController.list_trangsuc = object_["trangsucs"];
+            ViewBag.ngaylap = DateTime.Now.Date;
+            ViewBag.tongtien = object_["tongtien"];
+            int phieu_count = db.PhieuDatHangs.Where(t => t.NgayLap.Value.Year == DateTime.Now.Year &&
+                                                t.NgayLap.Value.Month == DateTime.Now.Month &&
+                                                t.NgayLap.Value.Day == DateTime.Now.Day).Count();
+            string idphieu = "DH" + String.Join("", DateTime.Now.Date.ToShortDateString().Split('/')) + (phieu_count + 1).ToString("00.#");
+            ViewBag.idphieu = idphieu;
+            PhieuDatHangsController.idphieu = idphieu;
+            return View("Create");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult HoanThanhChon([Bind(Include = "SoPhieu,TongGiaTri,NgayLap,NguoiLap")] PhieuDatHang phieuDatHang)
+        {
+            if (ModelState.IsValid)
+            {
+                db.PhieuDatHangs.Add(phieuDatHang);
+                foreach(var item in PhieuDatHangsController.list_trangsuc)
+                {
+                    db.SaveChanges();
+                    db.SP_INSERT_PDH_TRANGSUC(PhieuDatHangsController.idphieu, item["mats"], item["tents"]
+                        , Int32.Parse(item["soluong"]), Int32.Parse(item["gia"]));
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.NguoiLap = new SelectList(db.NhanViens, "ID", "HoTen", phieuDatHang.NguoiLap);
+
+            return View(phieuDatHang);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

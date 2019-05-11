@@ -111,6 +111,8 @@
     <FunctionImportMapping FunctionImportName="SP_INSERT_HD_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_INSERT_HD_TRANGSUC" />
     <FunctionImportMapping FunctionImportName="SP_INSERT_HOADON" FunctionName="TRANGSUCModel.Store.SP_INSERT_HOADON" />
     <FunctionImportMapping FunctionImportName="SP_INSERT_NHANVIEN" FunctionName="TRANGSUCModel.Store.SP_INSERT_NHANVIEN" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_PDH_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_INSERT_PDH_TRANGSUC" />
+    <FunctionImportMapping FunctionImportName="SP_INSERT_PXH_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_INSERT_PXH_TRANGSUC" />
     <FunctionImportMapping FunctionImportName="SP_INSERT_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_INSERT_TRANGSUC" />
     <FunctionImportMapping FunctionImportName="SP_UPDATE_HOADON" FunctionName="TRANGSUCModel.Store.SP_UPDATE_HOADON" />
     <FunctionImportMapping FunctionImportName="SP_UPDATE_NHANVIEN" FunctionName="TRANGSUCModel.Store.SP_UPDATE_NHANVIEN" />

@@ -268,6 +268,20 @@
           <Parameter Name="CMND" Type="nvarchar" Mode="In" />
           <Parameter Name="NgaySinh" Type="date" Mode="In" />
         </Function>
+        <Function Name="SP_INSERT_PDH_TRANGSUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idphieu" Type="nvarchar" Mode="In" />
+          <Parameter Name="idts" Type="nvarchar" Mode="In" />
+          <Parameter Name="tents" Type="nvarchar" Mode="In" />
+          <Parameter Name="soluong" Type="int" Mode="In" />
+          <Parameter Name="gia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_INSERT_PXH_TRANGSUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idphieu" Type="nvarchar" Mode="In" />
+          <Parameter Name="idts" Type="nvarchar" Mode="In" />
+          <Parameter Name="tents" Type="nvarchar" Mode="In" />
+          <Parameter Name="soluong" Type="int" Mode="In" />
+          <Parameter Name="gia" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_INSERT_TRANGSUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="TenTrangSuc" Type="nvarchar" Mode="In" />
           <Parameter Name="LoaiTrangSuc" Type="nvarchar" Mode="In" />
@@ -684,6 +698,20 @@
             <Parameter Name="CMND" Mode="In" Type="String" />
             <Parameter Name="NgaySinh" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="SP_INSERT_PDH_TRANGSUC">
+            <Parameter Name="idphieu" Mode="In" Type="String" />
+            <Parameter Name="idts" Mode="In" Type="String" />
+            <Parameter Name="tents" Mode="In" Type="String" />
+            <Parameter Name="soluong" Mode="In" Type="Int32" />
+            <Parameter Name="gia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERT_PXH_TRANGSUC">
+            <Parameter Name="idphieu" Mode="In" Type="String" />
+            <Parameter Name="idts" Mode="In" Type="String" />
+            <Parameter Name="tents" Mode="In" Type="String" />
+            <Parameter Name="soluong" Mode="In" Type="Int32" />
+            <Parameter Name="gia" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="SP_INSERT_TRANGSUC">
             <Parameter Name="TenTrangSuc" Mode="In" Type="String" />
             <Parameter Name="LoaiTrangSuc" Mode="In" Type="String" />
@@ -828,6 +856,8 @@
           <FunctionImportMapping FunctionImportName="SP_INSERT_HD_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_INSERT_HD_TRANGSUC" />
           <FunctionImportMapping FunctionImportName="SP_INSERT_HOADON" FunctionName="TRANGSUCModel.Store.SP_INSERT_HOADON" />
           <FunctionImportMapping FunctionImportName="SP_INSERT_NHANVIEN" FunctionName="TRANGSUCModel.Store.SP_INSERT_NHANVIEN" />
+          <FunctionImportMapping FunctionImportName="SP_INSERT_PDH_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_INSERT_PDH_TRANGSUC" />
+          <FunctionImportMapping FunctionImportName="SP_INSERT_PXH_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_INSERT_PXH_TRANGSUC" />
           <FunctionImportMapping FunctionImportName="SP_INSERT_TRANGSUC" FunctionName="TRANGSUCModel.Store.SP_INSERT_TRANGSUC" />
           <FunctionImportMapping FunctionImportName="SP_UPDATE_HOADON" FunctionName="TRANGSUCModel.Store.SP_UPDATE_HOADON" />
           <FunctionImportMapping FunctionImportName="SP_UPDATE_NHANVIEN" FunctionName="TRANGSUCModel.Store.SP_UPDATE_NHANVIEN" />

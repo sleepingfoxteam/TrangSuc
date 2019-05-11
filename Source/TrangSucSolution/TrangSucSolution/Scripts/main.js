@@ -4,8 +4,43 @@
 function InitialEvents() {
     InitialAddToCartEvent();
     InitialDatHangEvent();
+    InitialThemTrangSucVaoPhieu();
+    InitialHoanThanhThem();
 }
 
+function InitialHoanThanhThem() {
+    $("#btn-hoanthanhchon").click(function () {
+        let trangsucs = [];
+        let tongtien = 0;
+        $("[name='chon']:checked").each(function (index, el) {
+            let parent = $(el).parent();
+            let mats = parent.find(".id").text();
+            let tents = parent.find(".tents").text();
+            let gia = parent.find(".giathanh").text().split(",").join("");
+            let soluong = parent.find("[name='soluong']").val();
+            tongtien += soluong * parseInt(gia);
+            let item_object = {
+                mats,
+                tents,
+                soluong,
+                gia
+            }
+            trangsucs.push(item_object);
+        });
+        let send_object = {
+            trangsucs,
+            tongtien
+        }
+        let send_json = JSON.stringify(send_object);
+        location.href = location.href.split("ThemSanPhamVaoPhieu")[0] + "HoanThanhChon?jsondata=" + send_json;
+    });
+}
+
+function InitialThemTrangSucVaoPhieu() {
+    $("#btn-addtrangsuc").click(function () {
+        location.href = location.href.split("Create")[0] + "ThemSanPhamVaoPhieu";
+    });
+}
 function InitialDatHangEvent() {
     $("#btn-dathang").click(function () {
         let giohangitems = $("#list-giohang").find(".item");

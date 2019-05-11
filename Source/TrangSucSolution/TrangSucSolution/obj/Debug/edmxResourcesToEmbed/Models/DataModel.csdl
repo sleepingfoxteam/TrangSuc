@@ -333,6 +333,20 @@
       <Parameter Name="CMND" Mode="In" Type="String" />
       <Parameter Name="NgaySinh" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="SP_INSERT_PDH_TRANGSUC">
+      <Parameter Name="idphieu" Mode="In" Type="String" />
+      <Parameter Name="idts" Mode="In" Type="String" />
+      <Parameter Name="tents" Mode="In" Type="String" />
+      <Parameter Name="soluong" Mode="In" Type="Int32" />
+      <Parameter Name="gia" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_INSERT_PXH_TRANGSUC">
+      <Parameter Name="idphieu" Mode="In" Type="String" />
+      <Parameter Name="idts" Mode="In" Type="String" />
+      <Parameter Name="tents" Mode="In" Type="String" />
+      <Parameter Name="soluong" Mode="In" Type="Int32" />
+      <Parameter Name="gia" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="SP_INSERT_TRANGSUC">
       <Parameter Name="TenTrangSuc" Mode="In" Type="String" />
       <Parameter Name="LoaiTrangSuc" Mode="In" Type="String" />

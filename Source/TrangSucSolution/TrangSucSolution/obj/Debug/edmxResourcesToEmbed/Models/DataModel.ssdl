@@ -263,6 +263,20 @@
     <Parameter Name="CMND" Type="nvarchar" Mode="In" />
     <Parameter Name="NgaySinh" Type="date" Mode="In" />
   </Function>
+  <Function Name="SP_INSERT_PDH_TRANGSUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idphieu" Type="nvarchar" Mode="In" />
+    <Parameter Name="idts" Type="nvarchar" Mode="In" />
+    <Parameter Name="tents" Type="nvarchar" Mode="In" />
+    <Parameter Name="soluong" Type="int" Mode="In" />
+    <Parameter Name="gia" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_INSERT_PXH_TRANGSUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idphieu" Type="nvarchar" Mode="In" />
+    <Parameter Name="idts" Type="nvarchar" Mode="In" />
+    <Parameter Name="tents" Type="nvarchar" Mode="In" />
+    <Parameter Name="soluong" Type="int" Mode="In" />
+    <Parameter Name="gia" Type="int" Mode="In" />
+  </Function>
   <Function Name="SP_INSERT_TRANGSUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="TenTrangSuc" Type="nvarchar" Mode="In" />
     <Parameter Name="LoaiTrangSuc" Type="nvarchar" Mode="In" />
