@@ -4,6 +4,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
 }
+
+@{ 
+    int giathitruong = ViewBag.giathitruong;
+}
 <div class="row">
     <div class="col-lg-12 col-md-12">
         <div class="topnav">
@@ -64,6 +68,7 @@
                 int count = 0;
                 foreach (var item in Model)
                 {
+                    int giadang =(int)(item.KhoiLuongTinh * giathitruong / 10 + item.GiaCong + item.GiaHat * item.SoHat);
                     if (count < 12)
                     {
                         <div class="item item-size">
@@ -72,7 +77,7 @@
                                 @Html.ActionLink(item.TenTrangSuc, "Details", new { id = item.ID }, new { @class = "aa-link" })
                             </h4>
                             <h5 class="text-center" style="color: orangered;">
-                                @Html.DisplayFor(modelItem => item.GiaHat)
+                                @giadang.ToString("#,##0")
                             </h5>
                             <button type="button" class="btn-primary btn-cart" data-id="@item.ID">Them Vao Gio Hang</button>
                         </div>
@@ -96,6 +101,7 @@
                 int countNhan = 0;
                 foreach (var item in Model)
                 {
+                    int giadang =(int)(item.KhoiLuongTinh * giathitruong + item.GiaCong + item.GiaHat * item.SoHat);
                     if (countNhan < 8 && item.LoaiTrangSuc == "L005")
                     {
                         <div class="item item-size">
@@ -104,9 +110,9 @@
                                 @Html.ActionLink(item.TenTrangSuc, "Details", new { id = item.ID }, new { @class = "aa-link" })
                             </h4>
                             <h5 class="text-center" style="color: orangered;">
-                                @Html.DisplayFor(modelItem => item.GiaHat)
+                                @giadang.ToString("#,##0")
                             </h5>
-
+                            <button type="button" class="btn-primary btn-cart" data-id="@item.ID">Them Vao Gio Hang</button>
                         </div>
                         countNhan++;
                     }
@@ -129,6 +135,7 @@
                 int countDayChuyen = 0;
                 foreach (var item in Model)
                 {
+                    int giadang =(int)(item.KhoiLuongTinh * giathitruong / 10 + item.GiaCong + item.GiaHat * item.SoHat);
                     if (countDayChuyen < 8 && item.LoaiTrangSuc == "L003")
                     {
                         <div class="item item-size">
@@ -137,8 +144,9 @@
                                 @Html.ActionLink(item.TenTrangSuc, "Details", new { id = item.ID }, new { @class = "aa-link" })
                             </h4>
                             <h5 class="text-center" style="color: orangered;">
-                                @Html.DisplayFor(modelItem => item.GiaHat)
+                                @giadang.ToString("#,##0")
                             </h5>
+                            <button type="button" class="btn-primary btn-cart" data-id="@item.ID">Them Vao Gio Hang</button>
                         </div>
                         countDayChuyen++;
                     }
@@ -161,6 +169,7 @@
                 int countBongTai = 0;
                 foreach (var item in Model)
                 {
+                    int giadang =(int)(item.KhoiLuongTinh * giathitruong / 10 + item.GiaCong + item.GiaHat * item.SoHat);
                     if (countBongTai < 8 && item.LoaiTrangSuc == "L002")
                     {
                         <div class="item item-size">
@@ -169,8 +178,9 @@
                                 @Html.ActionLink(item.TenTrangSuc, "Details", new { id = item.ID }, new { @class = "aa-link" })
                             </h4>
                             <h5 class="text-center" style="color: orangered;">
-                                @Html.DisplayFor(modelItem => item.GiaHat)
+                                @giadang.ToString("#,##0")
                             </h5>
+                            <button type="button" class="btn-primary btn-cart" data-id="@item.ID">Them Vao Gio Hang</button>
                         </div>
                         countBongTai++;
                     }
@@ -193,6 +203,7 @@
                 int countVongTay = 0;
                 foreach (var item in Model)
                 {
+                    int giadang =(int)(item.KhoiLuongTinh * giathitruong / 10 + item.GiaCong + item.GiaHat * item.SoHat);
                     if (countVongTay < 8 && item.LoaiTrangSuc == "L001")
                     {
                         <div class="item item-size">
@@ -201,8 +212,9 @@
                                 @Html.ActionLink(item.TenTrangSuc, "Details", new { id = item.ID }, new { @class = "aa-link" })
                             </h4>
                             <h5 class="text-center" style="color: orangered;">
-                                @Html.DisplayFor(modelItem => item.GiaHat)
+                                @giadang.ToString("#,##0")
                             </h5>
+                            <button type="button" class="btn-primary btn-cart" data-id="@item.ID">Them Vao Gio Hang</button>
                         </div>
                         countVongTay++;
                     }
@@ -225,6 +237,7 @@
                 int countLacTay = 0;
                 foreach (var item in Model)
                 {
+                    int giadang =(int)(item.KhoiLuongTinh * giathitruong / 10 + item.GiaCong + item.GiaHat * item.SoHat);
                     if (countLacTay < 8 && item.LoaiTrangSuc == "L004")
                     {
                         <div class="item item-size">
@@ -233,8 +246,9 @@
                                 @Html.ActionLink(item.TenTrangSuc, "Details", new { id = item.ID }, new { @class = "aa-link" })
                             </h4>
                             <h5 class="text-center" style="color: orangered;">
-                                @Html.DisplayFor(modelItem => item.GiaHat)
+                                @giadang.ToString("#,##0")
                             </h5>
+                            <button type="button" class="btn-primary btn-cart" data-id="@item.ID">Them Vao Gio Hang</button>
                         </div>
                         countLacTay++;
                     }

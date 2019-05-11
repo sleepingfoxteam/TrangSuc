@@ -37,48 +37,6 @@ namespace TrangSucSolution.Models
         public virtual DbSet<PXH_TrangSuc> PXH_TrangSuc { get; set; }
         public virtual DbSet<TrangSuc> TrangSucs { get; set; }
     
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
         public virtual int SP_DELETE_HOADON(string iD)
         {
             var iDParameter = iD != null ?
@@ -106,45 +64,6 @@ namespace TrangSucSolution.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_DELETE_TRANGSUC", iDParameter);
         }
     
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
         public virtual int SP_INSERT_CTHD(string iDHD, string iDTS, Nullable<int> gia, Nullable<int> soLuong)
         {
             var iDHDParameter = iDHD != null ?
@@ -164,6 +83,31 @@ namespace TrangSucSolution.Models
                 new ObjectParameter("SoLuong", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERT_CTHD", iDHDParameter, iDTSParameter, giaParameter, soLuongParameter);
+        }
+    
+        public virtual int SP_INSERT_HD_TRANGSUC(string mahd, string mats, Nullable<int> soluong, string tents, Nullable<int> gia)
+        {
+            var mahdParameter = mahd != null ?
+                new ObjectParameter("mahd", mahd) :
+                new ObjectParameter("mahd", typeof(string));
+    
+            var matsParameter = mats != null ?
+                new ObjectParameter("mats", mats) :
+                new ObjectParameter("mats", typeof(string));
+    
+            var soluongParameter = soluong.HasValue ?
+                new ObjectParameter("soluong", soluong) :
+                new ObjectParameter("soluong", typeof(int));
+    
+            var tentsParameter = tents != null ?
+                new ObjectParameter("tents", tents) :
+                new ObjectParameter("tents", typeof(string));
+    
+            var giaParameter = gia.HasValue ?
+                new ObjectParameter("gia", gia) :
+                new ObjectParameter("gia", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERT_HD_TRANGSUC", mahdParameter, matsParameter, soluongParameter, tentsParameter, giaParameter);
         }
     
         public virtual int SP_INSERT_HOADON(Nullable<bool> thanhToanLuon, string nguoiLap, Nullable<int> tongTien, string hoTenKhach, string stdKhach, string diachiKhach, Nullable<int> tinhTrang)
@@ -257,23 +201,6 @@ namespace TrangSucSolution.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERT_TRANGSUC", tenTrangSucParameter, loaiTrangSucParameter, giaCongParameter, khoiLuongTinhParameter, soHatParameter, giaHatParameter, hinhAnhParameter);
         }
     
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
         public virtual int SP_UPDATE_HOADON(Nullable<System.DateTime> ngayThanhToan, Nullable<int> tinhTrang, string iD)
         {
             var ngayThanhToanParameter = ngayThanhToan.HasValue ?
@@ -335,11 +262,6 @@ namespace TrangSucSolution.Models
                 new ObjectParameter("HinhAnh", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPDATE_TRANGSUC", iDParameter, giaCongParameter, giaHatParameter, hinhAnhParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     }
 }

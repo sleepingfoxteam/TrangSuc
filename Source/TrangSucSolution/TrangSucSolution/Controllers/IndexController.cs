@@ -15,17 +15,21 @@ namespace TrangSucSolution.Controllers
     {
         private TRANGSUCEntities db = new TRANGSUCEntities();
 
-        static List<TrangSuc> listgiohang = new List<TrangSuc>();
+        static public List<GioHangItem> listgiohang = new List<GioHangItem>();
+
+        static int giathitruong = 2000000;
 
         // GET: Index
         public ActionResult Index()
         {
             var trangSucs = db.TrangSucs.Include(t => t.LoaiTrangSuc1).OrderByDescending(ts => ts.ID);
+            ViewBag.giathitruong = IndexController.giathitruong;
             return View(trangSucs.ToList());
         }
 
         public ActionResult GioHang()
         {
+            ViewBag.giathitruong = IndexController.giathitruong;
             return View(IndexController.listgiohang);
         }
 
@@ -34,7 +38,7 @@ namespace TrangSucSolution.Controllers
             var trangsuc = db.TrangSucs.Where(t => t.ID == id);
             if (trangsuc == null) return -1;
             TrangSuc ts = trangsuc.ToList<TrangSuc>().ElementAt(0);
-            IndexController.listgiohang.Add(ts);
+            IndexController.listgiohang.Add(new GioHangItem(ts,1));
             return 1;
         }
         // GET: Index/Details/5
@@ -50,6 +54,12 @@ namespace TrangSucSolution.Controllers
                 return HttpNotFound();
             }
             return View(trangSuc);
+        }
+
+        public int capnhatgiathitruong(int giamoi)
+        {
+            IndexController.giathitruong = giamoi;
+            return 1;
         }
 
         /* ActionResult Edit(string id)
