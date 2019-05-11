@@ -1,0 +1,37 @@
+﻿@model IEnumerable<TrangSucSolution.Models.TrangSuc>
+@{
+    ViewBag.Title = "ThemSanPhamVaoPhieu";
+    Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
+    int giathitruong = ViewBag.giathitruong / 10;
+}
+
+<h2>ThemSanPhamVaoPhieu</h2>
+<div class="container" style="display:flex; flex-wrap:wrap;">
+    @{
+        int count = 0;
+        foreach (var item in Model)
+        {
+            if (count <= 4)
+            {
+                int giathanh = (int)(giathitruong * item.KhoiLuongTinh + item.GiaCong + item.GiaHat * item.SoHat);
+                <div class="item-chon">
+                    <div class="item-img">
+                        <img src="../../../Image/@item.HinhAnh" />
+                    </div>
+                    <div class="item-info">
+                        <h5 class="tents">@item.TenTrangSuc</h5>
+                        <span class="text-danger giathanh">@giathanh.ToString("##,#")</span>
+                        <span class="disabled invisible hidden id">@item.ID</span>
+                        <input type="number" name="soluong" value="0" />
+                        <label for="chon">Them vao Phieu: </label>
+                        <input type="checkbox" name="chon" id="chon"/>
+                    </div>
+                </div>
+                count++;
+            }
+            count = 0;
+        }
+    }
+</div>
+<button class="btn btn-primary" id="btn-hoanthanhchon">Hoan Thanh</button>
+

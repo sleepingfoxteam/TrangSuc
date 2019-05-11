@@ -50,7 +50,8 @@ namespace TrangSucSolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,TenTrangSuc,LoaiTrangSuc,GiaCong,KhoiLuongTinh,SoHat,GiaHat,HinhAnh")] TrangSuc trangSuc, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "ID,TenTrangSuc,LoaiTrangSuc,GiaCong,KhoiLuongTinh,SoHat,GiaHat,HinhAnh")] TrangSuc trangSuc
+            , HttpPostedFileBase file)
         {
             if (file.ContentLength > 0)
             {
@@ -93,7 +94,8 @@ namespace TrangSucSolution.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,TenTrangSuc,LoaiTrangSuc,GiaCong,KhoiLuongTinh,SoHat,GiaHat,HinhAnh")] TrangSuc trangSuc, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "ID,TenTrangSuc,LoaiTrangSuc,GiaCong,KhoiLuongTinh,SoHat,GiaHat,HinhAnh")] TrangSuc trangSuc
+            , HttpPostedFileBase file)
         {
             
             if (file.ContentLength > 0)
