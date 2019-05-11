@@ -4,6 +4,10 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
 }
+
+@{ 
+    int giathitruong = (int)(ViewBag.giathitruong / 10);
+}
 <hr />
 <!--Hình ảnh sản phẩm-->
 <div class="row">
@@ -26,9 +30,12 @@
                 </h5>
 
             </div>
+            @{ 
+                int giathanh = (int)(giathitruong * Model.KhoiLuongTinh + Model.GiaCong + Model.GiaHat * Model.SoHat);
+            }
             <div class="col-lg-12 col-md-12">
                 <h3 style="color: orangered;">
-                    @Html.DisplayFor(model => model.GiaHat) đ
+                    @giathanh.ToString("##,#") vnđ
                 </h3>
 
             </div>
@@ -39,10 +46,7 @@
                 </h5>
             </div>
             <div class="col-lg-12 col-md-12" style="margin-top: 20px;">
-                <button class="btn btn-default" style="background-color:black;color:white;font-size:20px;
-padding:10px 22px;">
-                    THÊM VÀO GIỎ HÀNG
-                </button>
+                <button type="button" class="btn-primary btn-cart" data-id="@Model.ID">Them Vao Gio Hang</button>
                 <button class="btn btn-default" style="background-color:black;color:white;font-size:20px;
 padding:10px 62px;">
                     MUA HÀNG

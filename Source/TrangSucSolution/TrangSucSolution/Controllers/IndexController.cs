@@ -44,6 +44,7 @@ namespace TrangSucSolution.Controllers
         // GET: Index/Details/5
         public ActionResult Details(string id)
         {
+            ViewBag.giathitruong = IndexController.giathitruong;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

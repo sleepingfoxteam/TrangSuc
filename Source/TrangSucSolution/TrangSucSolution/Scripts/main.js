@@ -60,7 +60,7 @@ function InitialAddToCartEvent() {
         $.ajax({
             type: "GET",
             method: "GET",
-            url: 'Index/AddToCart?id=' + id,
+            url: '../../../Index/AddToCart?id=' + id,
             success: function (result) {
                 if (result == 1) {
                     alert('thanh cong');
